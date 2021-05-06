@@ -6,51 +6,44 @@
     src: url(https://fonts.gstatic.com/s/spacemono/v6/i7dSIFZifjKcF5UAWdDRYERE_FeqHCSR.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
 body {
     background: black;
     background-image: url("https://www.pixel4k.com/wp-content/uploads/2018/10/abstract-simple-colors-8k_1539371561.jpg");
-    background-position: center;
+    background-position: middle;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
-a1{
+a.button {
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 5px 20px;
     text-align: right;
     text-decoration: none;
     display: inline-block;
-    font-size: 18px;
+    font-size: 14px;
+    z-index: 99;
+    right: 30px;
+    font-family:'Space Mono';
 }
-a2{
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: right;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-}
-a3{
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: right;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-}
+
 h1{
     color: rgb(255, 255, 255);
     text-align: center;
     font-family: 'Space Mono';
-    font-size: 500%;
+    font-size: 600%;
+    position:absolute;
+    top: 20%;
+    left: 23%;
     
 }
 h2{
     color: rgb(255, 255, 255);
     text-align: center;
-    font-size: 150%;
+    font-size: 300%;
     font-family: 'Space Mono';
+    position:absolute;
+    top: 55%;
+    left: 35%;
 }
