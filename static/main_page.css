@@ -1,8 +1,25 @@
 body {
-    background-image: url("http://www.rio.rj.gov.br/image/image_gallery?uuid=a6e1e30a-e2e0-4256-ac5e-2d5e63d74651&groupId=91257&t=1549573156620");
+    background: black;
+    background-image: url("https://i.pinimg.com/originals/dd/9b/6a/dd9b6a7d5bfc1272d4074c52489198cb.jpg");
+    background-repeat: no-repeat;
+    background-position: center top ;
 }
 
 h1{
-    color: blue;
-    opacity: 0.3;
+    color: rgb(255, 255, 255);
+    text-align: center;
+}
+h2{
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-size: 15px;
+}
+a1{
+
+}
+a2{
+    
+}
+a3{
+    
 }
