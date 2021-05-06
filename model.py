@@ -1,33 +1,31 @@
-from flask import Flask
-from flask import render_template, request
+class usuario:
+    def __init__(self, senha, nome, idade, documento, cidade, bairro):
+        self.__nome = nome
+        self.__senha = senha
+        self.__idade = idade
+        self.__documento = documento
+        self.__cidade = cidade
+        self.__bairro = bairro
+        pass
+    
+    def registro_usuario(self):
+        registro_de_usuarios = self.__nome + " - " + self.__senha  + "\n"
+        arquivo = open("registro_de_usuarios.txt","a")
+        arquivo.writelines(registro_de_usuarios)
 
-app = Flask(__name__)  # CRIA O OBJETO
 
 
-@app.route("/")  # CRIA A ROTA
-def main_page():                              # PAGINA PRINCIPAL
-    pass
+class empresa:
+    def __init__(self, nome_empresa, tipo_empresa, cidade_empresa, bairro_empresa, rua_empresa, numero_empresa):
+        self.__nome_empresa = nome_empresa
+        self.__tipo_empresa = tipo_empresa
+        self.__cidade_empresa = cidade_empresa
+        self.__bairro_empresa = bairro_empresa
+        self.__rua_empresa = rua_empresa
+        self.__numero_empresa = numero_empresa
+        pass
 
-@app.route("/enterprise_register_page", methods = ["POST", "GET"])
-def entreprise_register_page():               # PAGINA DE REGISTRO DE EMPRESA
-    pass
-
-@app.route("/user_register_page", methods = ["POST", "GET"])
-def user_register_page():                     # PAGINA DE REGISTRO DE USUARIO
-    pass
-
-@app.route("/login_page", methods = ["POST", "GET"])
-def login_page():                             # PAGINA DE LOGIN
-    pass
-
-@app.route("/enterprise_page", methods = ["POST", "GET"])
-def enterprise_page():                        # PAGINA DE EMPRESA
-    pass
-
-@app.route("/user_page", methods = ["POST", "GET"])
-def user_page():                              # PAGINA DE USUARIO
-    pass
-
-@app.route("/comments_about_page", methods = ["POST", "GET"])
-def comments_about():                         # COMENTARIOS SOBRE MELHORIAS / FEEDBACKS
-    pass
+    def registro_empresa(self):
+        registro_de_empresas = self.__nome_empresa + " - " + self.__senha  + "\n"
+        arquivo = open("registro_de_empresas.txt","a")
+        arquivo.writelines(registro_de_empresas)
