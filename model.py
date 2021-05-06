@@ -13,7 +13,7 @@ class usuario:
         arquivo = open("registro_de_usuarios.txt","a")
         arquivo.writelines(registro_de_usuarios)
 
-
+        oi
 
 class empresa:
     def __init__(self, nome_empresa, tipo_empresa, cidade_empresa, bairro_empresa, rua_empresa, numero_empresa):
