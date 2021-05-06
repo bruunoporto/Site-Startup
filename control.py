@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import render_template, request
-from database import usuario, empresa
+from model import usuario, empresa
 
 ##########################################################################
 
