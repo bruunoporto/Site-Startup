@@ -21,3 +21,43 @@ h1{
     font-family: 'Space Mono';
     font-size: 200%; 
 }
+
+
+input[type=text]{
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 4px;
+    color: rgb(255, 255, 255);
+    background-color: #ffffff00;
+    font-family: 'Space Mono';
+    transition: width 0.4s ease-in-out;
+    width: 230px;
+    position: relative;
+    left: 470px;
+}
+
+input[type=text]:focus {
+    width: 26%;
+}
+
+label{
+    color: rgb(255, 255, 255);
+    text-align: right;
+    font-family: 'Space Mono';
+    position: relative;
+    left: 450px;
+}
+
+input[type=submit]{
+    border-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    padding: 5px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    right: 30px;
+    font-family:'Space Mono';
+    background-color: rgba(255, 255, 255, 0);
+    position: relative;
+    left: 620px;
+}
