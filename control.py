@@ -42,3 +42,5 @@ def comments_about():                         # COMENTARIOS SOBRE MELHORIAS / FE
     return render_template('comments_about_page.html')
 
 app.run()
+
+mama aqui bruno
