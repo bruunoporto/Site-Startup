@@ -24,7 +24,7 @@ def login():
         senha = request.form["senha"]
         log = login_model(nome,senha)
         if not log[0]:
-            return "<h1>Por favor cadastre user e senha</h1>"
+            return "<h1>Senha ou Usuario Incorretos</h1>"
         else:
             if log[1] == "Empresa":
                 return redirect("/enterprise_page")
