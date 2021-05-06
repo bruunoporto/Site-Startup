@@ -28,26 +28,44 @@ def user_register_page():                     # PAGINA DE REGISTRO DE USUARIO
 
 @app.route("/user_register", methods = ["POST", "GET"])
 def cadastro():
-
-    if request.method  == "POST":
-        nome = request.form["nome"]
-        senha = request.form["senha"]
-        idade = request.form["idade"]
-        documento = request.form["cpf"]
-        cidade = request.form["cidade"]
-        bairro = request.form["bairro"]
-
-        if nome == "" or senha == "":
-            return "<h1>Por favor cadastre user e senha</h1>"
-        else:
-            pessoa = usuario(senha, nome, idade, documento, cidade, bairro)
-            pessoa.registro_usuario()
-            return "<h1>Registro salvo com sucesso</h1>"
-
+    
+        if request.method  == "POST":
+            nome = request.form["nome"]
+            senha = request.form["senha"]
+            idade = request.form["idade"]
+            documento = request.form["cpf"]
+            cidade = request.form["cidade"]
+            bairro = request.form["bairro"]
+            
+            if nome == "" or senha == "":
+                return "<h1>Por favor cadastre user e senha</h1>"
+            else:
+                pessoa = usuario(senha, nome, idade, documento, cidade, bairro)
+                pessoa.registro_usuario()
+                return "<h1>Registro salvo com sucesso</h1>"
+    
 @app.route("/enterprise_page", methods = ["POST", "GET"])
 def enterprise_page():                        # PAGINA DE EMPRESA
     return render_template('enterprise_page.html')
 
+@app.route("/enterprise_register", methods = ["POST", "GET"])
+def cadastro_empresa():
+
+    if request.method  == "POST":
+        nome = request.form["nome"]
+        senha = request.form["senha"]
+        tipo = request.form["tipo"]
+        rua = request.form["rua"]
+        cidade = request.form["cidade"]
+        bairro = request.form["bairro"]
+        numero = request.form["numero"]
+
+        if nome == "" or senha == "":
+            return "<h1>Por favor cadastre user e senha</h1>"
+        else:
+            pessoa = empresa(nome, senha , tipo, cidade, bairro, rua, numero)
+            pessoa.registro_empresa()
+            return "<h1>Registro salvo com sucesso</h1>"
 
 @app.route("/user_page", methods = ["POST", "GET"])
 def user_page():                              # PAGINA DE USUARIO

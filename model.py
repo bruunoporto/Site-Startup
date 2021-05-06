@@ -15,9 +15,10 @@ class usuario:
 
 
 class empresa:
-    def __init__(self, nome_empresa, tipo_empresa, cidade_empresa, bairro_empresa, rua_empresa, numero_empresa):
+    def __init__(self, nome_empresa, senha , tipo_empresa, cidade_empresa, bairro_empresa, rua_empresa, numero_empresa):
         self.__nome_empresa = nome_empresa
         self.__tipo_empresa = tipo_empresa
+        self.__senha = senha
         self.__cidade_empresa = cidade_empresa
         self.__bairro_empresa = bairro_empresa
         self.__rua_empresa = rua_empresa
