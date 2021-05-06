@@ -38,4 +38,4 @@ def login_model(nome,senha):
         return (True, "Empresa")
     elif login in usuario.readlines():
         return (True, "Usuario")
-    return False
+    return (False, "")
