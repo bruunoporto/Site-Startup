@@ -13,7 +13,7 @@ class usuario:
     def registro_usuario(self):
         con = sqlite3.connect('database.db')
         cur = con.cursor()
-        cur.execute("INSERT INTO enterprises VALUES ('"+self.__nome+"','"+self.__idade+"','"+self.__senha+"','"+self.__cidade+"','"+self.__bairro+"','"+self.__documento+"')")
+        cur.execute("INSERT INTO users VALUES ('"+self.__nome+"','"+self.__idade+"','"+self.__senha+"','"+self.__cidade+"','"+self.__bairro+"','"+self.__documento+"')")
         con.commit()
         con.close()
 
@@ -45,9 +45,7 @@ def login_model(nome,senha):
                 con.commit()
                 con.close()
                 return (True, "Usuario")
-    print("Not User")
     for el in cur.execute("SELECT * FROM enterprises"):
-        print(el)
         if el[0] == nome:
             print("opa")
             if el[2]== senha:
