@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template, request
+from flask import render_template, request, redirect
 from model import usuario, empresa, login_model
 
 ##########################################################################
@@ -22,11 +22,14 @@ def login():
     if request.method  == "POST":
         nome = request.form["nome"]
         senha = request.form["senha"]
-        
-        if not login_model(nome,senha):
+        log = login_model(nome,senha)
+        if not log[0]:
             return "<h1>Por favor cadastre user e senha</h1>"
         else:
-            return "<h1>Login Efetuado com Sucesso</h1>"
+            if log[1] == "Empresa":
+                return redirect("/enterprise_page")
+            elif log[1] == "Usuario":
+                return redirect("/user_page")
 
 @app.route("/enterprise_register_page", methods = ["POST", "GET"])
 def entreprise_register_page():               # PAGINA DE REGISTRO DE EMPRESA
