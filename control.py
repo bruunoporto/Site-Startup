@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import render_template, request
-from model import usuario, empresa
+from model import usuario, empresa, login_model
 
 ##########################################################################
 
@@ -16,6 +16,17 @@ def main_page():                              # PAGINA PRINCIPAL
 def login_page():                             # PAGINA DE LOGIN
     return render_template('login_page.html')
 
+@app.route("/login", methods = ["POST", "GET"])
+def login():
+    
+    if request.method  == "POST":
+        nome = request.form["nome"]
+        senha = request.form["senha"]
+        
+        if not login_model(nome,senha):
+            return "<h1>Por favor cadastre user e senha</h1>"
+        else:
+            return "<h1>Login Efetuado com Sucesso</h1>"
 
 @app.route("/enterprise_register_page", methods = ["POST", "GET"])
 def entreprise_register_page():               # PAGINA DE REGISTRO DE EMPRESA
@@ -29,20 +40,20 @@ def user_register_page():                     # PAGINA DE REGISTRO DE USUARIO
 @app.route("/user_register", methods = ["POST", "GET"])
 def cadastro():
     
-        if request.method  == "POST":
-            nome = request.form["nome"]
-            senha = request.form["senha"]
-            idade = request.form["idade"]
-            documento = request.form["cpf"]
-            cidade = request.form["cidade"]
-            bairro = request.form["bairro"]
-            
-            if nome == "" or senha == "":
-                return "<h1>Por favor cadastre user e senha</h1>"
-            else:
-                pessoa = usuario(senha, nome, idade, documento, cidade, bairro)
-                pessoa.registro_usuario()
-                return "<h1>Registro salvo com sucesso</h1>"
+    if request.method  == "POST":
+        nome = request.form["nome"]
+        senha = request.form["senha"]
+        idade = request.form["idade"]
+        documento = request.form["cpf"]
+        cidade = request.form["cidade"]
+        bairro = request.form["bairro"]
+        
+        if nome == "" or senha == "":
+            return "<h1>Por favor cadastre user e senha</h1>"
+        else:
+            pessoa = usuario(senha, nome, idade, documento, cidade, bairro)
+            pessoa.registro_usuario()
+            return "<h1>Registro salvo com sucesso</h1>"
     
 @app.route("/enterprise_page", methods = ["POST", "GET"])
 def enterprise_page():                        # PAGINA DE EMPRESA

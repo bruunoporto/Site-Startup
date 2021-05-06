@@ -29,3 +29,13 @@ class empresa:
         registro_de_empresas = self.__nome_empresa + " - " + self.__senha  + "\n"
         arquivo = open("registro_de_empresas.txt","a")
         arquivo.writelines(registro_de_empresas)
+
+def login_model(nome,senha):
+    empresa = open("registro_de_empresas.txt","r")
+    usuario = open("registro_de_usuarios.txt","r")
+    login = nome + " - " + senha + "\n"
+    if login in empresa.readlines():
+        return (True, "Empresa")
+    elif login in usuario.readlines():
+        return (True, "Usuario")
+    return False
