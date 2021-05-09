@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Space Mono';
+    font-style: italic;
+    font-weight: 700;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/spacemono/v6/i7dSIFZifjKcF5UAWdDRYERE_FeqHCSR.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+h1 {
+    color: rgb(255, 255, 255);
+    text-align: center;
+    font-family: 'Space Mono';
+    font-size: 300%; 
+}
+
+body {
+    background: black;
+    background-image: url("https://www.pixel4k.com/wp-content/uploads/2021/05/abstract-waving-4k_1620165379-1536x960.jpg");
+    background-position: left 30%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+#map {
+    height: 400px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
+}
+
+
