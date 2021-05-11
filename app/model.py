@@ -56,8 +56,8 @@ def login_model(nome,senha):
     con.close()
     return (False, "")
 
-# con = sqlite3.connect('database.db')
-# cur = con.cursor()
+con = sqlite3.connect('database.db')
+cur = con.cursor()
 
 # Create table
 # cur.execute('''CREATE TABLE enterprises (name text, type text, password text, city text, neighborhood text, street text, number real)''')

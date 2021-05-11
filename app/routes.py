@@ -1,10 +1,8 @@
-from flask import Flask
+from app import app
 from flask import render_template, request, redirect
-from model import usuario, empresa, login_model
+from app.model import usuario, empresa, login_model
 
 ##########################################################################
-
-app = Flask(__name__)
 
 
 @app.route("/")
