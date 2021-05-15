@@ -7,7 +7,7 @@ from app.model import usuario, empresa, login_model
 
 @app.route("/")
 def main_page():                              # PAGINA PRINCIPAL
-    return render_template('main_page.html')
+    return render_template('main_page.html', title = "Home")
 
 
 @app.route("/login_page", methods = ["POST", "GET"])
