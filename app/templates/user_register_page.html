@@ -1,19 +1,50 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>CADASTRO DE USUÁRIO</h1><br><br>
-<form action="/user_register" method="POST">
-    <label id="form1" for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome"><br><br>
-    <label id="form2" for="senha">Senha:</label>
-    <input type="text" id="senha" name="senha"><br><br>
-    <label id="form3" for="idade">Idade:</label>
-    <input type="text" id="idade" name="idade"><br><br>
-    <label id="form4" for="bairro">Bairro:</label>
-    <input type="text" id="bairro" name="bairro"><br><br>
-    <label id="form5" for="cidade">Cidade:</label>
-    <input type="text" id="cidade" name="cidade"><br><br>
-    <label id="form6" for="cpf">Documento:</label>
-    <input type="text" id="cpf" name="cpf"><br><br><br><br>
-    <input id="submit1" type="submit" value="REGISTRAR USUÁRIO">
-</form>
+    <form action="" method="post" >
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}<br>
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.age.label }}<br>
+            {{ form.age(size=32) }}<br>
+            {% for error in form.age.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=32) }}<br>
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.city.label }}<br>
+            {{ form.city(size=32) }}<br>
+            {% for error in form.city.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.district.label }}<br>
+            {{ form.district(size=32) }}<br>
+            {% for error in form.district.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
 {% endblock %}

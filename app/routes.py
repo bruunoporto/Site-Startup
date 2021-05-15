@@ -1,7 +1,7 @@
 from app import app
 from flask import render_template, request, redirect, url_for, flash
 from app.model import usuario, empresa, login_model
-from app.forms import LoginForm
+from app.forms import LoginForm, RegisterEnterprise, RegisterUser 
 ##########################################################################
 
 
@@ -21,7 +21,6 @@ def login_page():
         return render_template('login_page.html', title="Login", css_file = "login_page.css", form = form)
     
     if request.method  == "POST":
-        return "OI"
         nome = request.form["nome"]
         senha = request.form["senha"]
         log = login_model(nome,senha)
@@ -32,20 +31,18 @@ def login_page():
                 return redirect("/enterprise_page")
             elif log[1] == "Usuario":
                 return redirect("/user_page")
-
-@app.route("/login", methods = ["POST", "GET"])
-def login():
-    pass
     
 
 @app.route("/enterprise_register_page", methods = ["POST", "GET"])
-def enterprise_register_page():               # PAGINA DE REGISTRO DE EMPRESA
-    return render_template('enterprise_register_page.html',title="Seja um Anunciante", css_file = "enterprise_register_page.css")
+def enterprise_register_page():
+    form = RegisterEnterprise()               # PAGINA DE REGISTRO DE EMPRESA
+    return render_template('enterprise_register_page.html',title="Seja um Anunciante", css_file = "enterprise_register_page.css", form=form)
 
 
 @app.route("/user_register_page", methods = ["POST", "GET"])
-def user_register_page():                     # PAGINA DE REGISTRO DE USUARIO
-    return render_template('user_register_page.html' ,title="Registro", css_file = "user_register_page.css")
+def user_register_page():
+    form = RegisterUser()                     # PAGINA DE REGISTRO DE USUARIO
+    return render_template('user_register_page.html' ,title="Registro", css_file = "user_register_page.css", form=form)
 
 @app.route("/user_register", methods = ["POST", "GET"])
 def cadastro():
