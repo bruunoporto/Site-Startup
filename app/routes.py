@@ -31,12 +31,12 @@ def login():
 
 @app.route("/enterprise_register_page", methods = ["POST", "GET"])
 def entreprise_register_page():               # PAGINA DE REGISTRO DE EMPRESA
-    return render_template('enterprise_register_page.html')
+    return render_template('enterprise_register_page.html',title="Registro", css_file = "enterprise_register_page.css")
 
 
 @app.route("/user_register_page", methods = ["POST", "GET"])
 def user_register_page():                     # PAGINA DE REGISTRO DE USUARIO
-    return render_template('user_register_page.html')
+    return render_template('user_register_page.html' ,title="Registro", css_file = "user_register_page.css")
 
 @app.route("/user_register", methods = ["POST", "GET"])
 def cadastro():
@@ -58,7 +58,7 @@ def cadastro():
     
 @app.route("/enterprise_page", methods = ["POST", "GET"])
 def enterprise_page():                        # PAGINA DE EMPRESA
-    return render_template('enterprise_page.html')
+    return render_template('enterprise_page.html', title="Empresa", css_file = "enterprise_page.css")
 
 @app.route("/enterprise_register", methods = ["POST", "GET"])
 def cadastro_empresa():
@@ -81,11 +81,11 @@ def cadastro_empresa():
 
 @app.route("/user_page", methods = ["POST", "GET"])
 def user_page():                              # PAGINA DE USUARIO
-    return render_template('user_page.html')
+    return render_template('user_page.html',title="Usuario", css_file = "user_page.css")
 
 
 @app.route("/comments_about_page", methods = ["POST", "GET"])
 def comments_about():                         # COMENTARIOS SOBRE MELHORIAS / FEEDBACKS
-    return render_template('comments_about_page.html')
+    return render_template('comments_about_page.html', title="Comentários")
 
 app.run()

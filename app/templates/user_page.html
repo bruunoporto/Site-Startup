@@ -1,7 +1,5 @@
-<!DOCTYPE html>
-<head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='user_page.css') }}">
-</head>
+{% extends "base.html" %}
+{% block content %}
 
 <h1>Página do usuário</h1>
 
@@ -27,10 +25,7 @@
     }
   </script>
 
-<script
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPIXNFud0mQJi53-Eg2UDOKRLridhrgb8&callback=initMap&libraries=&v=weekly"
-async
-></script>
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCPIXNFud0mQJi53-Eg2UDOKRLridhrgb8&callback=initMap&libraries=&v=weekly" async></script>
+{% endblock %}
 <!-- Rio de Janeiro - Google Maps API key: "AIzaSyCPIXNFud0mQJi53-Eg2UDOKRLridhrgb8" -->
 
