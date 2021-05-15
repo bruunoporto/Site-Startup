@@ -6,6 +6,7 @@ from app.model import usuario, empresa, login_model
 
 
 @app.route("/")
+@app.route("/index")
 def main_page():                              # PAGINA PRINCIPAL
     return render_template('main_page.html', title = "Home")
 
@@ -30,7 +31,7 @@ def login():
                 return redirect("/user_page")
 
 @app.route("/enterprise_register_page", methods = ["POST", "GET"])
-def entreprise_register_page():               # PAGINA DE REGISTRO DE EMPRESA
+def enterprise_register_page():               # PAGINA DE REGISTRO DE EMPRESA
     return render_template('enterprise_register_page.html',title="Registro", css_file = "enterprise_register_page.css")
 
 

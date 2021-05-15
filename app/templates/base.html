@@ -14,10 +14,10 @@
     </head>
     <body>
         <div>
-            <a href="/" class="button">HOME</a>
-            <a href="/enterprise_register_page" class="button">SEJA UM ANUNCIANTE</a>
-            <a href="/user_register_page" class="button">REGISTRO</a>
-            <a href="/login_page" class="button">LOGIN</a>
+            <a href="{{ url_for('main_page') }}" class="button">HOME</a>
+            <a href="{{ url_for('enterprise_register_page') }}" class="button">SEJA UM ANUNCIANTE</a>
+            <a href="{{ url_for('user_register_page') }}" class="button">REGISTRO</a>
+            <a href="{{ url_for('login_page') }}" class="button">LOGIN</a>
         </div>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
