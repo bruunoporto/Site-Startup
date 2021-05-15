@@ -20,7 +20,7 @@ def login_page():
             redirect(url_for("main_page"))                             # PAGINA DE LOGIN
         return render_template('login_page.html', title="Login", css_file = "login_page.css", form = form)
     
-    if request.method  == "POST":
+    elif request.method  == "POST":
         nome = request.form["nome"]
         senha = request.form["senha"]
         log = login_model(nome,senha)
@@ -35,41 +35,10 @@ def login_page():
 
 @app.route("/enterprise_register_page", methods = ["POST", "GET"])
 def enterprise_register_page():
-    form = RegisterEnterprise()               # PAGINA DE REGISTRO DE EMPRESA
-    return render_template('enterprise_register_page.html',title="Seja um Anunciante", css_file = "enterprise_register_page.css", form=form)
-
-
-@app.route("/user_register_page", methods = ["POST", "GET"])
-def user_register_page():
-    form = RegisterUser()                     # PAGINA DE REGISTRO DE USUARIO
-    return render_template('user_register_page.html' ,title="Registro", css_file = "user_register_page.css", form=form)
-
-@app.route("/user_register", methods = ["POST", "GET"])
-def cadastro():
-    
-    if request.method  == "POST":
-        nome = request.form["nome"]
-        senha = request.form["senha"]
-        idade = request.form["idade"]
-        documento = request.form["cpf"]
-        cidade = request.form["cidade"]
-        bairro = request.form["bairro"]
-        
-        if nome == "" or senha == "":
-            return "<h1>Por favor cadastre user e senha</h1>"
-        else:
-            pessoa = usuario(senha, nome, idade, documento, cidade, bairro)
-            pessoa.registro_usuario()
-            return "<h1>Registro salvo com sucesso</h1>"
-    
-@app.route("/enterprise_page", methods = ["POST", "GET"])
-def enterprise_page():                        # PAGINA DE EMPRESA
-    return render_template('enterprise_page.html', title="Empresa", css_file = "enterprise_page.css")
-
-@app.route("/enterprise_register", methods = ["POST", "GET"])
-def cadastro_empresa():
-
-    if request.method  == "POST":
+    if request.method == "GET":
+        form = RegisterEnterprise()               # PAGINA DE REGISTRO DE EMPRESA
+        return render_template('enterprise_register_page.html',title="Seja um Anunciante", css_file = "enterprise_register_page.css", form=form)
+    elif request.method  == "POST":
         nome = request.form["nome"]
         senha = request.form["senha"]
         tipo = request.form["tipo"]
@@ -84,6 +53,33 @@ def cadastro_empresa():
             pessoa = empresa(nome, senha , tipo, cidade, bairro, rua, numero)
             pessoa.registro_empresa()
             return "<h1>Registro salvo com sucesso</h1>"
+    
+
+@app.route("/user_register_page", methods = ["POST", "GET"])
+def user_register_page():
+    if request.method == "GET":
+        form = RegisterUser()                     # PAGINA DE REGISTRO DE USUARIO
+        return render_template('user_register_page.html' ,title="Registro", css_file = "user_register_page.css", form=form)
+    elif request.method  == "POST":
+        nome = request.form["nome"]
+        senha = request.form["senha"]
+        idade = request.form["idade"]
+        documento = request.form["cpf"]
+        cidade = request.form["cidade"]
+        bairro = request.form["bairro"]
+        
+        if nome == "" or senha == "":
+            return "<h1>Por favor cadastre user e senha</h1>"
+        else:
+            pessoa = usuario(senha, nome, idade, documento, cidade, bairro)
+            pessoa.registro_usuario()
+            return "<h1>Registro salvo com sucesso</h1>"
+               
+    
+@app.route("/enterprise_page", methods = ["POST", "GET"])
+def enterprise_page():                        # PAGINA DE EMPRESA
+    return render_template('enterprise_page.html', title="Empresa", css_file = "enterprise_page.css")
+    
 
 @app.route("/user_page", methods = ["POST", "GET"])
 def user_page():                              # PAGINA DE USUARIO
