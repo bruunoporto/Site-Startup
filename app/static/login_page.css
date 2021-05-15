@@ -54,11 +54,14 @@ input[type=submit]{
     left: 620px;
 }
 
+#formgeral{
+    margin-left: center;
+}
+
 #form1{
-    padding-left: 10px;
-    align-items: center;
+    margin-left: 10px;
 }
 
 #submit1{
-    align-items: center;
+    margin-left: -45px;
 }

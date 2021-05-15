@@ -1,8 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-
 <h1>LOGIN</h1>
-<form action="/login" method="POST">
+<form id="formgeral" action="/login" method="POST">
     <label id="form1" for="nome">Nome:</label>
     <input type="text" id="nome" name="nome"><br><br>
     <label id="form2" for="senha">Senha:</label>
@@ -10,5 +9,4 @@
     <input id="submit1" type="submit" value="EFETUAR LOGIN">
 </form>
 
-<p>teste</p>
 {% endblock %}
