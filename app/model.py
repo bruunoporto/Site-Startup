@@ -83,7 +83,7 @@ def login_model(nome, senha):
     return (False, "")
 
 
-@login.user.loader
+@login.User_loader
 def load_user(id):
     return usuario.query.get(int(id))
 
