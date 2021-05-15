@@ -61,3 +61,31 @@ input[type=submit]{
     position: relative;
     left: 620px;
 }
+
+#form1{
+    padding-left: 60px;
+}
+
+#form2{
+    padding-left: 50px;
+}
+
+#form3{
+    padding-left: 50px;
+}
+
+#form4{
+    padding-left: 40px;
+}
+
+#form5{
+    padding-left: 40px;
+}
+
+#form6{
+    padding-left: 10px;
+}
+
+#submit1{
+    margin-left: -20px;
+}
