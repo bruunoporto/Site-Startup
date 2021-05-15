@@ -51,7 +51,11 @@ class empresa(db.Model):
     #    self.__bairro_empresa = bairro_empresa
     #    self.__rua_empresa = rua_empresa
     #    self.__numero_empresa = numero_empresa
-    #
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
     def registro_empresa(self):
         con = sqlite3.connect('database.db')
@@ -83,7 +87,7 @@ def login_model(nome, senha):
     return (False, "")
 
 
-@login.User_loader
+@login.user_loader
 def load_user(id):
     return usuario.query.get(int(id))
 
