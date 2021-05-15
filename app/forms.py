@@ -16,16 +16,6 @@ class RegisterUser(FlaskForm):
     district = StringField("Bairro", validators=[DataRequired()])
     password = PasswordField("Senha", validators=[DataRequired()])
     submit = SubmitField("Registrar")
-
-class RegisterEnterprise(FlaskForm):
-    username = StringField("Nome", validators=[DataRequired()])
-    age = StringField("Idade", validators=[DataRequired()])
-    email = StringField("Email", validators=[DataRequired()])
-    city = StringField("Cidade", validators=[DataRequired()])
-    district = StringField("Bairro", validators=[DataRequired()])
-    password = PasswordField("Senha", validators=[DataRequired()])
-    submit = SubmitField("Registrar")
-
 class RegisterEnterprise(FlaskForm):
     username = StringField("Nome Fantasia", validators=[DataRequired()])
     street = StringField("Rua", validators=[DataRequired()])
