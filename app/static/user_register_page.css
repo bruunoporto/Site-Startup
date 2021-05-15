@@ -32,6 +32,22 @@ input[type=text]:focus {
     width: 26%;
 }
 
+input[type=password]{
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 4px;
+    color: rgb(255, 255, 255);
+    background-color: #ffffff00;
+    font-family: 'Space Mono';
+    transition: width 0.4s ease-in-out;
+    width: 230px;
+    position: relative;
+    left: 470px;
+}
+
+input[type=password]:focus {
+    width: 26%;
+}
+
 label{
     color: rgb(255, 255, 255);
     text-align: right;

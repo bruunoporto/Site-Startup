@@ -21,8 +21,8 @@ def login_page():
         return render_template('login_page.html', title="Login", css_file = "login_page.css", form = form)
     
     elif request.method  == "POST":
-        nome = request.form["nome"]
-        senha = request.form["senha"]
+        nome = request.form["username"]
+        senha = request.form["password"]
         log = login_model(nome,senha)
         if not log[0]:
             return "<h1>Senha ou Usuario Incorretos</h1>"
@@ -39,8 +39,8 @@ def enterprise_register_page():
         form = RegisterEnterprise()               # PAGINA DE REGISTRO DE EMPRESA
         return render_template('enterprise_register_page.html',title="Seja um Anunciante", css_file = "enterprise_register_page.css", form=form)
     elif request.method  == "POST":
-        nome = request.form["nome"]
-        senha = request.form["senha"]
+        nome = request.form["username"]
+        senha = request.form["password"]
         tipo = request.form["tipo"]
         rua = request.form["rua"]
         cidade = request.form["cidade"]
