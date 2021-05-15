@@ -1,24 +1,27 @@
 from app import app
-from flask import render_template, request, redirect
+from flask import render_template, request, redirect, url_for, flash
 from app.model import usuario, empresa, login_model
-
+from app.forms import LoginForm
 ##########################################################################
 
 
 @app.route("/")
 @app.route("/index")
 def main_page():                              # PAGINA PRINCIPAL
-    return render_template('main_page.html', title = "Home")
+    return render_template('main_page.html', title = "Home", css_file = "main_page.css")
 
 
 @app.route("/login_page", methods = ["POST", "GET"])
-def login_page():                             # PAGINA DE LOGIN
-    return render_template('login_page.html', title="Login", css_file = "login_page.css")
-
-@app.route("/login", methods = ["POST", "GET"])
-def login():
+def login_page():
+    if request.method == "GET":
+        form = LoginForm()
+        if form.validate_on_submit():
+            flash("Precisa inserir informação para user {}, lembra de mim = {}".format(form.username.data, form.remember_me.data))
+            redirect(url_for("main_page"))                             # PAGINA DE LOGIN
+        return render_template('login_page.html', title="Login", css_file = "login_page.css", form = form)
     
     if request.method  == "POST":
+        return "OI"
         nome = request.form["nome"]
         senha = request.form["senha"]
         log = login_model(nome,senha)
@@ -30,9 +33,14 @@ def login():
             elif log[1] == "Usuario":
                 return redirect("/user_page")
 
+@app.route("/login", methods = ["POST", "GET"])
+def login():
+    pass
+    
+
 @app.route("/enterprise_register_page", methods = ["POST", "GET"])
 def enterprise_register_page():               # PAGINA DE REGISTRO DE EMPRESA
-    return render_template('enterprise_register_page.html',title="Registro", css_file = "enterprise_register_page.css")
+    return render_template('enterprise_register_page.html',title="Seja um Anunciante", css_file = "enterprise_register_page.css")
 
 
 @app.route("/user_register_page", methods = ["POST", "GET"])

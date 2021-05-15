@@ -1,12 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>LOGIN</h1>
-<form id="formgeral" action="/login" method="POST">
-    <label id="form1" for="nome">Nome:</label>
-    <input type="text" id="nome" name="nome"><br><br>
-    <label id="form2" for="senha">Senha:</label>
-    <input type="text" id="senha" name="senha"><br><br>
-    <input id="submit1" type="submit" value="EFETUAR LOGIN">
-</form>
+    <form action="" method="post" action="/login">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=32) }}<br>
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}<br>
+            {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+    </form>
 
 {% endblock %}
