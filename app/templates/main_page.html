@@ -1,16 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main_page.css') }}">
-</head>
-<body>
-
-<a href="/enterprise_register_page" class="button">SEJA UM ANUNCIANTE</a>
-<a href="/user_register_page" class="button">REGISTRO</a>
-<a href="/login_page" class="button">LOGIN</a>
-
-<h1>NOME CRIATIVO</h1>
-<h2>Rio de Janeiro</h2>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+    <h1>NOME CRIATIVO</h1>
+    <h2>Rio de Janeiro</h2>
+{% endblock %}

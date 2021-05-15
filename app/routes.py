@@ -7,12 +7,12 @@ from app.model import usuario, empresa, login_model
 
 @app.route("/")
 def main_page():                              # PAGINA PRINCIPAL
-    return render_template('main_page.html')
+    return render_template('main_page.html', title = "Home")
 
 
 @app.route("/login_page", methods = ["POST", "GET"])
 def login_page():                             # PAGINA DE LOGIN
-    return render_template('login_page.html')
+    return render_template('login_page.html', title="Login", css_file = "login_page.css")
 
 @app.route("/login", methods = ["POST", "GET"])
 def login():

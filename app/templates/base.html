@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        {% if css_file%}
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename=css_file) }}">
+        {% else %}
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main_page.css') }}">
+        {% endif %}
+        {% if title %}
+        <title>{{ title }} - Nome Criativo</title>
+        {% else %}
+        <title>Nome Criativo</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>
+            <a href="/" class="button">HOME</a>
+            <a href="/enterprise_register_page" class="button">SEJA UM ANUNCIANTE</a>
+            <a href="/user_register_page" class="button">REGISTRO</a>
+            <a href="/login_page" class="button">LOGIN</a>
+        </div>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>

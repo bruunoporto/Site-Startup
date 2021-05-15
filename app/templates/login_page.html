@@ -1,6 +1,5 @@
-<head>
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login_page.css') }}">
-</head>
+{% extends "base.html" %}
+{% block content %}
 
 <h1>LOGIN</h1>
 <form action="/login" method="POST">
@@ -12,3 +11,4 @@
 </form>
 
 <p>teste</p>
+{% endblock %}
