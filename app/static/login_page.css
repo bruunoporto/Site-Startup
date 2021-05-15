@@ -60,3 +60,12 @@ input[type=submit]{
     position: relative;
     left: 620px;
 }
+
+#form1{
+    padding-left: 10px;
+    align-items: center;
+}
+
+#submit1{
+    align-items: center;
+}
