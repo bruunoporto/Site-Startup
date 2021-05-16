@@ -47,5 +47,10 @@ class empresa(UserMixin, db.Model):
 
 @login.user_loader
 def load_user(id):
-    return usuario.query.get(int(id))
+    if usuario.query.get(int(id)):
+        load = usuario.query.get(int(id))
+    else:
+        load = empresa.query.get(int(id))
+    return load
+
 

@@ -32,10 +32,7 @@ def login_page():
             if user is None or not user.check_password(request.form["password"]):
                 flash("Senha ou Usuario Incorretos")
                 return redirect(url_for("login_page"))
-        logout_user()
-        print(user.is_anonymous)
         login_user(user)
-        print(user.is_anonymous)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             if  boole:
