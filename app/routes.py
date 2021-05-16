@@ -30,7 +30,7 @@ def login_page():
             user = empresa.query.filter_by(username=request.form["username"]).first()
             usuario == False
             if user is None or not user.check_password(request.form["password"]):
-                flash("senha incorreta")
+                flash("senha ou usuario incorretos")
                 return redirect(url_for("login_page"))
         login_user(user)
         next_page = request.args.get('next')
