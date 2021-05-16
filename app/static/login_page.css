@@ -1,91 +1,93 @@
 @import url("base.css");
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-    * {
-        margin: 0;
-        border: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Space Mono", sans-serif;
-    }
-    
-    
-    body{
-        background-image: url("https://www.pixel4k.com/wp-content/uploads/2020/08/blur-abstract_1596927849-1536x864.jpg");
-        background-repeat: no-repeat;
-        min-height: 600px;
-        min-width: 100px;
-        color:black;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-size: 100%;
-    }
-    
-    
-    main.container{
-        background-color: rgba(87, 02, 43, 0.45);
-        width: 200px;
-        height: 320px;
-        padding: 20px;
-        border-radius: 10px;
-        align-items: center;
-        justify-content: center;
-    
-    }
-    
-    
-    .inputs input::placeholder{
-        color: rgba(13, 0, 26, 0.8);
-    }
-    
-    .inputs input{
-        outline: none;
-    }
-    
-    
-    h1{
-        font-family: "Poppins";
-        color: ghostwhite;
-        font-style: bold;
-    }
-    
-    form{
-        display: flex;
-        flex-direction: column;
-    }
-    
-    
-    form input[type=submit]{
-        margin-top: 30px;
-        background-color: rgb(255, 255, 255);
-        padding: 7px;
-        border-radius: 4px;
-        color: rgba(13, 0, 26, 1);
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 12px;
-        transition: all 0.3s ease;
-    }
-    
-    form input[type=submit]:hover{
-        letter-spacing: 0.3px;
-        background-color: rgba(87, 02, 43, 1);
-        color: white;
-    }
-    
-    
-    form input[type=text]{
-        border-radius: 4px;
-        padding-left: 5px;
-    }
-    
-    
-    form input[type=password]{
-        padding-left: 5px;
-        border-radius: 4px;
-    }
-    
-    form label{
-        color: white;
-        font-family: "Poppins";
-        font-size: 13px;
-    }
+* {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Space Mono", sans-serif;
+}
+
+
+body{
+    background-image: url("https://www.pixel4k.com/wp-content/uploads/2020/08/blur-abstract_1596927849-1536x864.jpg");
+    background-repeat: no-repeat;
+    min-height: 600px;
+    min-width: 100px;
+    color:black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: 100%;
+}
+
+
+main.container{
+    background-color: rgba(87, 02, 43, 0.45);
+    width: 200px;
+    height: 320px;
+    padding: 20px;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.inputs input::placeholder{
+    color: rgba(13, 0, 26, 0.8);
+}
+
+.inputs input{
+    outline: none;
+}
+
+
+h1{
+    font-family: "Poppins";
+    color: ghostwhite;
+    font-style: bold;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+}
+
+
+form input[type=submit]{
+    margin-top: 30px;
+    background-color: rgb(255, 255, 255);
+    padding: 7px;
+    border-radius: 4px;
+    color: rgba(13, 0, 26, 1);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+form input[type=submit]:hover{
+    letter-spacing: 0.3px;
+    background-color: rgba(87, 02, 43, 1);
+    color: white;
+}
+
+
+form input[type=text]{
+    border-radius: 4px;
+    padding-left: 5px;
+}
+
+
+form input[type=password]{
+    padding-left: 5px;
+    border-radius: 4px;
+}
+
+form label{
+    color: white;
+    font-family: "Poppins";
+    font-size: 13px;
+}
