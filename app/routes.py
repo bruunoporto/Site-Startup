@@ -25,17 +25,20 @@ def login_page():
         return render_template('login_page.html', title="Login", css_file="login_page.css", form=form,  user=current_user)
     if request.method == "POST":
         user = usuario.query.filter_by(username=request.form["username"]).first()
-        usuario == True
+        boole = True
         if user is None or not user.check_password(request.form["password"]):
-            user = empresa.query.filter_by(username=request.form["username"]).first()
-            usuario == False
+            user = empresa.query.filter_by(enterprise_name=request.form["username"]).first()
+            boole = False
             if user is None or not user.check_password(request.form["password"]):
-                flash("senha ou usuario incorretos")
+                flash("Senha ou Usuario Incorretos")
                 return redirect(url_for("login_page"))
+        logout_user()
+        print(user.is_anonymous)
         login_user(user)
+        print(user.is_anonymous)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
-            if usuario:
+            if  boole:
                 next_page = url_for('user_page')
             else:
                 next_page = url_for('enterprise_page')
@@ -51,7 +54,7 @@ def enterprise_register_page():
         form = RegisterEnterprise()               # PAGINA DE REGISTRO DE EMPRESA
         return render_template('enterprise_register_page.html', title="Seja um Anunciante", css_file="enterprise_register_page.css", form=form,  user=current_user)
     elif request.method == "POST":
-        id = randint(1,100000000000000000000000000000000000000000000000000000)
+        id = randint(1,1000000000000000)
         nome = request.form["username"]
         senha = request.form["password"]
         email = request.form["email"]
@@ -74,7 +77,7 @@ def user_register_page():
         form = RegisterUser()                     # PAGINA DE REGISTRO DE USUARIO
         return render_template('user_register_page.html', title="Registro", css_file="user_register_page.css", form=form,  user=current_user)
     elif request.method == "POST":
-        id = randint(1,1000000000000000000000000000000000000000)
+        id = randint(1,1000000000)
         nome = request.form["username"]
         senha = request.form["password"]
         email = request.form["email"]
