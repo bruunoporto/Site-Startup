@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>CADASTRO DE USUÁRIO</h1><br><br>
+
+<div class="alignment">
+   
+<section class="container">
+    <h1>Cadastro de Usuário</h1><br><br>
     <form action="" method="post" >
+        <div class="inputs">
         {{ form.hidden_tag() }}
         <p>
             {{ form.username.label }}<br>
@@ -45,6 +50,9 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
+        </div>
         <p>{{ form.submit() }}</p>
     </form>
+</section>
+</div>
 {% endblock %}

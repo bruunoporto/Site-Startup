@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-
+<div class="alignment">
+<section class="container">
 <h1>CADASTRO DE EMPRESA</h1>
     <form action="" method="post" >
+        <div class="inputs">
         {{ form.hidden_tag() }}
         <p>
             {{ form.username.label }}<br>
@@ -46,7 +48,9 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
+        </div>
         <p>{{ form.submit() }}</p>
     </form>
-
+</section>
+</div>
 {% endblock %}
