@@ -3,9 +3,8 @@
 body {
     background: black;
     background-image: url("https://www.pixel4k.com/wp-content/uploads/2018/10/abstract-simple-colors-8k_1539371561.jpg");
-    background-position: middle;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%;
 }
 
 

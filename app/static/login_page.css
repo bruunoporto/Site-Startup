@@ -3,10 +3,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
 * {
-    margin: 0;
-    border: 0;
-    padding: 0;
-    box-sizing: border-box;
     font-family: "Space Mono", sans-serif;
 }
 
@@ -14,23 +10,24 @@
 body{
     background-image: url("https://www.pixel4k.com/wp-content/uploads/2020/08/blur-abstract_1596927849-1536x864.jpg");
     background-repeat: no-repeat;
-    min-height: 600px;
-    min-width: 100px;
     color:black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-size: 100%;
 }
 
+div.alignment{
+    align-items: center;
+    justify-content: center;
+    display: grid;    
+}
 
-main.container{
+section.container{
     background-color: rgba(87, 02, 43, 0.45);
-    width: 200px;
-    height: 320px;
-    padding: 20px;
+    width: 110%;
+    height: 100%;
+    padding: 2%;
     border-radius: 10px;
     align-items: center;
+    display: grid;
     justify-content: center;
 
 }

@@ -3,9 +3,8 @@
 body {
     background: black;
     background-image: url("https://www.pixel4k.com/wp-content/uploads/2020/08/blur-abstract_1596927849-1536x864.jpg");
-    background-position: left 30%;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%;
 }
 
 h1{

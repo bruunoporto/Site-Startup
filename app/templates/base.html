@@ -13,7 +13,7 @@
         {% endif %}
     </head>
     <body>
-        <div>
+        <header class="menu">
             <a href="{{ url_for('main_page') }}" class="button">HOME</a>
             {% if user.is_authenticated %}
             <a href="{{ url_for('logout') }}" class="button">LOGOUT</a>
@@ -23,7 +23,7 @@
             <a href="{{ url_for('user_register_page') }}" class="button">REGISTRO</a>
             <a href="{{ url_for('login_page') }}" class="button">LOGIN</a>
             {% endif %}
-        </div>
+        </header>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         <ul>
