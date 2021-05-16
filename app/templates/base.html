@@ -16,7 +16,11 @@
         <header class="menu">
             <a href="{{ url_for('main_page') }}" class="button">HOME</a>
             {% if user.is_authenticated %}
+            {% if user.username %}
             <a href="{{ url_for('user_page')}}"class="button">{{user.username}}</a>
+            {% else %}
+            <a href="{{ url_for('enterprise_page')}}"class="button">{{user.enterprise_name}}</a>
+            {% endif%}
             <a href="{{ url_for('logout') }}" class="button">LOGOUT</a>
             {% else %}
             <a href="{{ url_for('enterprise_register_page') }}" class="button">SEJA UM ANUNCIANTE</a>
