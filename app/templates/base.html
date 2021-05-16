@@ -15,9 +15,14 @@
     <body>
         <div>
             <a href="{{ url_for('main_page') }}" class="button">HOME</a>
+            {% if user.is_authenticated %}
+            <a href="{{ url_for('logout') }}" class="button">LOGOUT</a>
+            {{user.username}}
+            {% else %}
             <a href="{{ url_for('enterprise_register_page') }}" class="button">SEJA UM ANUNCIANTE</a>
             <a href="{{ url_for('user_register_page') }}" class="button">REGISTRO</a>
             <a href="{{ url_for('login_page') }}" class="button">LOGIN</a>
+            {% endif %}
         </div>
         {% with messages = get_flashed_messages() %}
         {% if messages %}

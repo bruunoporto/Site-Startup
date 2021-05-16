@@ -5,13 +5,14 @@ from flask_login import UserMixin
 
 
 class usuario(UserMixin, db.Model):
+    __tablename__ = "usuario"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(120))
     city = db.Column(db.String(120))
-    disctric = db.Column(db.String(50))
-    age = db.Column(db.Integer, primary_key=True)
+    district = db.Column(db.String(50))
+    age = db.Column(db.Integer)
 
     def __repr__(self):
         return "<User {}>".format(self.username)
@@ -32,12 +33,13 @@ class usuario(UserMixin, db.Model):
 
 
 class empresa(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
+    __tablename__ = "empresa"
+    id = db.Column(db.Integer,primary_key=True)
     enterprise_name = db.Column(db.String(64), index=True, unique=True)
     email = db.Column(db.String(120), index=True, unique=True)
     password_hash = db.Column(db.String(120))
     city = db.Column(db.String(120))
-    disctric = db.Column(db.String(50))
+    district = db.Column(db.String(50))
     street = db.Column(db.String(120))
 
     def __repr__(self):
@@ -90,7 +92,6 @@ def login_model(nome, senha):
 @login.user_loader
 def load_user(id):
     return usuario.query.get(int(id))
-
 
 #con = sqlite3.connect('database.db')
 #cur = con.cursor()
