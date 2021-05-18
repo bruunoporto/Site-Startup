@@ -3,7 +3,7 @@
 <div class="alignment">
 <section class="container">
 <h1>CADASTRO DE EMPRESA</h1>
-    <form action="" method="post" >
+    <form action="" method="POST" novalidate>
         <div class="inputs">
         {{ form.hidden_tag() }}
         <p>
@@ -14,9 +14,23 @@
             {% endfor %}
         </p>
         <p>
+            {{ form.document.label }}<br>
+            {{ form.document(size=32) }}<br>
+            {% for error in form.document.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
             {{ form.password.label }}<br>
             {{ form.password(size=32) }}<br>
             {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password_confirmation.label }}<br>
+            {{ form.password_confirmation(size=32) }}<br>
+            {% for error in form.password_confirmation.errors %}
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>

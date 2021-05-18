@@ -20,16 +20,14 @@ def main_page():                              # PAGINA PRINCIPAL
 
 @app.route("/login_page", methods=["POST", "GET"])
 def login_page():
-    if request.method == "GET":
-        form = LoginForm()
-        return render_template('login_page.html', title="Login", css_file="login_page.css", form=form,  user=current_user)
-    if request.method == "POST":
-        user = usuario.query.filter_by(username=request.form["username"]).first()
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = usuario.query.filter_by(username=form.username.data).first()
         boole = True
-        if user is None or not user.check_password(request.form["password"]):
-            user = empresa.query.filter_by(enterprise_name=request.form["username"]).first()
+        if user is None or not user.check_password(form.password.data):
+            user = empresa.query.filter_by(enterprise_name=form.username.data).first()
             boole = False
-            if user is None or not user.check_password(request.form["password"]):
+            if user is None or not user.check_password(form.password.data):
                 flash("Senha ou Usuario Incorretos")
                 return redirect(url_for("login_page"))
         login_user(user)
@@ -40,6 +38,7 @@ def login_page():
             else:
                 next_page = url_for('enterprise_page')
         return redirect(next_page)
+    return render_template('login_page.html', title="Login", css_file="login_page.css", form=form,  user=current_user)
         #flash("Precisa inserir informação para user {}, lembra de mim = {}".format(form.username.data, form.remember_me.data))
         # redirect(url_for("main_page"))                             # PAGINA DE LOGIN
    
@@ -47,47 +46,47 @@ def login_page():
 
 @app.route("/enterprise_register_page", methods=["POST", "GET"])
 def enterprise_register_page():
-    if request.method == "GET":
-        form = RegisterEnterprise()               # PAGINA DE REGISTRO DE EMPRESA
-        return render_template('enterprise_register_page.html', title="Seja um Anunciante", css_file="enterprise_register_page.css", form=form,  user=current_user)
-    elif request.method == "POST":
-        id = randint(1,1000000000000000)
-        nome = request.form["username"]
-        senha = request.form["password"]
-        email = request.form["email"]
-        rua = request.form["street"]
-        cidade = request.form["city"]
-        bairro = request.form["district"]
+    
+    form = RegisterEnterprise()               # PAGINA DE REGISTRO DE EMPRESA
+    if form.validate_on_submit():
+        id = form.document.data
+        nome = form.username.data
+        senha = form.password.data
+        email = form.email.data
+        rua = form.street.data
+        cidade = form.city.data
+        bairro = form.district.data
         pass_hash = generate_password_hash(senha)
         pessoa = empresa(id=id,enterprise_name=nome, password_hash=pass_hash, email = email, street=rua, district=bairro, city=cidade)
         flash("Regitro Salvo com Sucesso")
         db.session.add(pessoa)
         db.session.commit()
         return redirect(url_for("login_page"))
+    return render_template('enterprise_register_page.html', title="Seja um Anunciante", css_file="enterprise_register_page.css", form=form,  user=current_user)
         
         
 
 
 @app.route("/user_register_page", methods=["POST", "GET"])
 def user_register_page():
-    if request.method == "GET":
-        form = RegisterUser()                     # PAGINA DE REGISTRO DE USUARIO
-        return render_template('user_register_page.html', title="Registro", css_file="user_register_page.css", form=form,  user=current_user)
-    elif request.method == "POST":
-        id = randint(1,1000000000)
-        nome = request.form["username"]
-        senha = request.form["password"]
-        email = request.form["email"]
-        idade= request.form["age"]
-        cidade = request.form["city"]
-        bairro = request.form["district"]
+    
+    form = RegisterUser()                     # PAGINA DE REGISTRO DE USUARIO
+    
+    if form.validate_on_submit():
+        id = form.document.data
+        nome = form.username.data
+        senha = form.password.data
+        email = form.email.data
+        idade= form.age.data    
+        cidade = form.city.data
+        bairro = form.district.data 
         pass_hash = generate_password_hash(senha)
         pessoa = usuario(id=id, username=nome, password_hash=pass_hash, email = email, age=idade, district=bairro, city=cidade)
         flash("Regitro Salvo com Sucesso")
         db.session.add(pessoa)
         db.session.commit()
         return redirect(url_for("login_page"))
-
+    return render_template('user_register_page.html', title="Registro", css_file="user_register_page.css", form=form,  user=current_user)
 
 @app.route("/enterprise_page", methods=["POST", "GET"])
 @login_required
