@@ -23,4 +23,10 @@ body {
     margin: auto; 
 }
 
+.enterprises{
+    color:white;
+    display: grid;
+    align-items: center;
+}
+
 

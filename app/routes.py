@@ -94,11 +94,15 @@ def user_register_page():
 def enterprise_page():                        # PAGINA DE EMPRESA
     return render_template('enterprise_page.html', title="Empresa", css_file="enterprise_page.css",user=current_user)
 
+@app.route("/enterprise_page/<name>", methods=["POST", "GET"])
+@login_required
+def enterprise_page_specific(name):                        # PAGINA DE EMPRESA
+    return render_template('enterprise_page.html', title=name, css_file="enterprise_page.css",user=empresa.query.filter_by(enterprise_name=name).first())
 
 @app.route("/user_page", methods=["POST", "GET"])
 @login_required
 def user_page():                              # PAGINA DE USUARIO
-    return render_template('user_page.html', title="Usuario", css_file="user_page.css", user=current_user)
+    return render_template('user_page.html', title="Usuario", empresa = empresa ,css_file="user_page.css", user=current_user)
 
 
 @app.route("/comments_about_page", methods=["POST", "GET"])
@@ -110,6 +114,8 @@ def comments_about():                         # COMENTARIOS SOBRE MELHORIAS / FE
 def logout():
     logout_user()
     return redirect(url_for("main_page"))
+
+
 
 
 app.run()
