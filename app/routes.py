@@ -92,12 +92,12 @@ def user_register_page():
 @app.route("/enterprise_page", methods=["POST", "GET"])
 @login_required
 def enterprise_page():                        # PAGINA DE EMPRESA
-    return render_template('enterprise_page.html', title="Empresa", css_file="enterprise_page.css",user=current_user)
+    return render_template('enterprise_page.html', title="Empresa", css_file="enterprise_page.css",user=current_user, enterprise= current_user)
 
 @app.route("/enterprise_page/<name>", methods=["POST", "GET"])
 @login_required
 def enterprise_page_specific(name):                        # PAGINA DE EMPRESA
-    return render_template('enterprise_page.html', title=name, css_file="enterprise_page.css",user=empresa.query.filter_by(enterprise_name=name).first())
+    return render_template('enterprise_page.html', title=name, css_file="enterprise_page.css",user=current_user, enterprise=empresa.query.filter_by(enterprise_name=name).first())
 
 @app.route("/user_page", methods=["POST", "GET"])
 @login_required
