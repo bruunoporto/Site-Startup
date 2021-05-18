@@ -6,16 +6,22 @@
 <div id="map"></div>
 
 <script>
+
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(initMap);
+      }
+    }
     // Initialize and add the map
-    function initMap() {
-      // The location of RJ
-      const location = { lat: -22.9170472 ,lng: -43.6019022 };
-      // The map, centered at RJ
+    function initMap(position) {
+      // The location of user
+      const location = { lat: position.coords.latitude ,lng: position.coords.longitude };
+      // The map, centered at user
       const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 12,
         center: location,
       });
-      // The marker, positioned at RJ
+      // The marker, positioned at city's user
       const marker = new google.maps.Marker({
         position: location,
         map: map,
@@ -23,12 +29,12 @@
     }
   </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s&callback=initMap&libraries=&v=weekly" async></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s&callback=getLocation&libraries=&v=weekly" async></script>
 
 <!-- Rio de Janeiro - Google Maps API key: "AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s" -->
 
 {% for enterprise in empresa.query.limit(20).all()%}
 <div class="enterprises"><p><a href="{{url_for('enterprise_page_specific',name=enterprise.enterprise_name)}}">{{ enterprise.enterprise_name }}</a> Endereço: <b>{{ enterprise.street }}</b></p></div>
+
 {% endfor %}
 {% endblock %}
-

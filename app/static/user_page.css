@@ -16,9 +16,7 @@ body {
 
 #map {
     height: 400px;
-    /* The height is 400 pixels */
     width: 70%;
-    /* The width is the width of the web page */
     border-radius: 8px;
     margin: auto; 
 }
@@ -27,9 +25,6 @@ body {
     color:white;
     display: grid;
     align-items: center;
+    font-family:'Poppins';
 }
 
-p{
-    margin-left: 15%;
-    font-family: Popins;
-}

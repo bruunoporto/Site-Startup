@@ -24,3 +24,10 @@ h1{
 #gmap_canvas{
     border-radius: 8px;
 }
+
+#map {
+    height: 400px;
+    width: 70%;
+    border-radius: 8px;
+    margin: auto; 
+}
