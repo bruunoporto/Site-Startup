@@ -15,3 +15,7 @@ h1{
     color:white;
     font-family:Poppins;
 }
+
+#gmap_canvas{
+    border-radius: 8px;
+}
