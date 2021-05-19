@@ -35,7 +35,7 @@ def login_page():
             if  boole:
                 next_page = url_for('user_page')
             else:
-                next_page = url_for('enterprise_page')
+                next_page = url_for('enterprise_page_specific',name=user.enterprise_name)
         return redirect(next_page)
     return render_template('login_page.html', title="Login", css_file="login_page.css", form=form,  user=current_user)
         #flash("Precisa inserir informação para user {}, lembra de mim = {}".format(form.username.data, form.remember_me.data))
