@@ -2,6 +2,7 @@
 {% block content %}
 <h1>{{title}}</h1>
 <h3>Contato: {{enterprise.query.filter_by(enterprise_name = title).first().email}}</h3>
+<!-- 
 <div id="map"></div>
 
 <script>
@@ -23,6 +24,7 @@
   </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s&callback=initMap&libraries=&v=weekly" async></script>
+-->
 <div class="alignment">
 {% for post in posts%}
 {% if usuario.query.filter_by(id = post.author_id).first().username %}
