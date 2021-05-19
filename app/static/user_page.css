@@ -23,19 +23,28 @@ body {
 
 .enterprises{
     color:white;
-    display: grid;
     align-items: center;
     font-family:'Poppins';
-    margin-left:15%;
-    margin-right: 15%;
-    background-color: rgba(0,0,0, 0.5);
+    margin-bottom: 2%;
     border: white solid 1px;
     border-radius: 5px;
-    margin-top: 1%;
+    height: 130px;
+    background-color: rgba(0,0,0, 0.5);
+}
+
+p{
+    text-align: top;
+    text-align: left;
+    margin-top: 10px;
+}
+
+#text{
+    text-align: bottom;
+    text-align: left;
 }
 
 .enterprises p{
-    margin-left: 2%;
+    margin-left: 1%;
 }
 
 .enterprises a{
