@@ -22,7 +22,7 @@ h1{
 
 h1:hover{
     transition: all 0.5s ease;
-    color: rgb(134, 36, 105);
+    color: rgba(211, 0, 105, 0.7);
     cursor: pointer;
 }
 
@@ -36,6 +36,6 @@ h2{
 
 h2:hover{
     transition: all 0.5s ease;
-    color: rgb(134, 36, 105);
+    color: rgba(211, 0, 105, 0.7);
     cursor: pointer;
 }
