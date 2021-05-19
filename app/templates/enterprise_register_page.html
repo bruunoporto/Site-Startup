@@ -56,6 +56,20 @@
             {% endfor %}
         </p>
         <p>
+            {{ form.latitude.label }}<br>
+            {{ form.latitude(size=32) }}<br>
+            {% for error in form.latitude.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.longitude.label }}<br>
+            {{ form.longitude(size=32) }}<br>
+            {% for error in form.longitude.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
             {{ form.district.label }}<br>
             {{ form.district(size=32) }}<br>
             {% for error in form.district.errors %}

@@ -31,3 +31,63 @@ h1{
     border-radius: 8px;
     margin: auto; 
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+form input[type=text]{
+    border-radius: 4px;
+    padding-left: 5px;
+    width: 230px;
+}
+.alignment{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+section.container{
+    background-color: rgba(87, 02, 43, 0.45);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.inputs input{
+    outline: none;
+}
+
+.inputs{
+    margin: auto;
+    text-align: center;
+}
+
+textarea#feedback{
+    width: 370px;
+    border-radius: 4px;
+    padding-left: 4px;
+}
+
+.inputs input::placeholder{
+    color: rgba(13, 0, 26, 0.8);
+}
+
+input#botao{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+form input[type=submit]{
+    border-radius: 4px;
+    padding-left: 0px;
+    width: 230px;
+    transition: all 0.3s ease;
+}
+
+form input[type=submit]:hover{
+    letter-spacing: 0.3px;
+    background-color: rgba(87, 02, 43, 1);
+    color: white;
+}

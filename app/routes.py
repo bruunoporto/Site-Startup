@@ -53,8 +53,10 @@ def enterprise_register_page():
         rua = form.street.data
         cidade = form.city.data
         bairro = form.district.data
+        latitude = form.latitude.data
+        longitude = form.longitude.data
         pass_hash = generate_password_hash(senha)
-        pessoa = empresa(id=id,enterprise_name=nome, password_hash=pass_hash, email = email, street=rua, district=bairro, city=cidade)
+        pessoa = empresa(id=id,enterprise_name=nome, password_hash=pass_hash,latitude= latitude,longitude=longitude, email = email, street=rua, district=bairro, city=cidade)
         flash("Regitro Salvo com Sucesso")
         db.session.add(pessoa)
         db.session.commit()
@@ -99,11 +101,6 @@ def enterprise_page_specific(name):                        # PAGINA DE EMPRESA
 @login_required
 def user_page():                              # PAGINA DE USUARIO
     return render_template('user_page.html', title="Usuario", empresa = empresa ,css_file="user_page.css", user=current_user)
-
-
-@app.route("/comments_about_page", methods=["POST", "GET"])
-def comments_about():                         # COMENTARIOS SOBRE MELHORIAS / FEEDBACKS
-    return render_template('comments_about_page.html', title="Comentários",  user=current_user)
 
 
 @app.route('/logout')

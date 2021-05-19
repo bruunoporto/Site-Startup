@@ -8,7 +8,7 @@
     // Initialize and add the map
     function initMap() {
       // The location of RJ
-      const location = { lat: -22.9170472 ,lng: -43.6019022 };
+      const location = { lat: {{ enterprise.latitude }} ,lng: {{enterprise.longitude}} };
       // The map, centered at RJ
       const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 12,
@@ -23,8 +23,16 @@
   </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s&callback=initMap&libraries=&v=weekly" async></script>
-
+<div class="alignment">
 <!-- Rio de Janeiro - Google Maps API key: "AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s" -->
-
-
+<section class="container">
+  <h1>Envie-nos seu feedback</h1><br><br>
+      <form action="">
+          <div class="inputs">
+              <textarea id="feedback" name="feedback" rows="4" cols="50">Digite seu feedback...</textarea><br><br>
+          </div>
+          <input id="botao" type="submit" value="ENVIAR">
+      </form>
+    </section>
+</div>
 {% endblock %}

@@ -33,7 +33,7 @@ class empresa(UserMixin, db.Model):
     password_hash = db.Column(db.String(120))
     city = db.Column(db.String(120))
     latitude = db.Column(db.Float)
-    logintude = db.Column(db.Float)
+    longitude = db.Column(db.Float)
     district = db.Column(db.String(50))
     street = db.Column(db.String(120))
 
