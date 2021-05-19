@@ -1,6 +1,3 @@
-from flask.globals import session
-import flask_login
-from random import randint
 from flask_login.utils import login_required, logout_user
 from werkzeug.security import generate_password_hash
 from app import app, db
