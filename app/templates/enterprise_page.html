@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>{{enterprise.enterprise_name}}</h1>
+<h1>{{title}}</h1>
 
 <div id="map"></div>
 
@@ -8,7 +8,7 @@
     // Initialize and add the map
     function initMap() {
       // The location of RJ
-      const location = { lat: {{ enterprise.latitude }} ,lng: {{enterprise.longitude}} };
+      const location = { lat: {{ enterprise.query.filter_by(enterprise_name = title).first().latitude }} ,lng: {{enterprise.query.filter_by(enterprise_name = title).first().longitude}} };
       // The map, centered at RJ
       const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 12,
@@ -25,7 +25,11 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s&callback=initMap&libraries=&v=weekly" async></script>
 <div class="alignment">
 {% for post in posts%}
-<div><p>{{ post.author.username }} disse: <b>{{ post.body }}</b></p></div>
+{% if usuario.query.filter_by(id = post.author_id).first().username %}
+<div><p>{{ usuario.query.filter_by(id = post.author_id).first().username }} disse: <b>{{ post.body }}</b></p></div>
+{% else %}
+<div><p>{{ enterprise.query.filter_by(id = post.author_id).first().enterprise_name }} disse: <b>{{ post.body }}</b></p></div>
+{% endif %}
 {% endfor %}
 <!-- Rio de Janeiro - Google Maps API key: "AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s" -->
 <section class="container">
@@ -34,11 +38,25 @@
   {% else %}
   <h1>Adicione Posts!</h1><br><br>
   {% endif %}
-      <form action="{{url_for('posts', enterpriseS = enterprise)}}">
+      <form action="{{url_for('enterprise_page_specific', name = title)}}", method='post', novalidate>
           <div class="inputs">
-              <textarea id="feedback" name="feedback" rows="4" cols="50">Digite sua mensagem...</textarea><br><br>
-          </div>
-          <input id="botao" type="submit" value="ENVIAR">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.text.label }}<br>
+                {{ form.text(size=32) }}<br>
+                {% for error in form.text.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.files.label }}<br>
+                {{ form.files(size=32) }}<br>
+                {% for error in form.files.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+        </div>
+        <p>{{ form.submit() }}</p> 
       </form>
     </section>
 </div>

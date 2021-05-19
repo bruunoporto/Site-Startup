@@ -1,5 +1,6 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, IntegerField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField
+from wtforms.fields.simple import FileField
 from wtforms.validators import DataRequired, EqualTo, Email,  ValidationError
 
 def IntegerCheck(form, field):
@@ -40,3 +41,7 @@ class RegisterEnterprise(FlaskForm):
     password_confirmation = PasswordField("Repita sua Senha", validators=[DataRequired("Insira novamente sua senha"), EqualTo('password', message="As duas senhas devem ser iguais")])
     submit = SubmitField("Registrar")
     
+class Comments(FlaskForm):
+    files = FileField("De upload em sua foto")
+    text = TextAreaField("Escreva seu Comentário", validators=[DataRequired("Escreva seu comentário!")]) 
+    submit = SubmitField("Registrar")

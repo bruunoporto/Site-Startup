@@ -19,7 +19,7 @@
             {% if user.username %}
             <a href="{{ url_for('user_page')}}"class="button">{{user.username}}</a>
             {% else %}
-            <a href="{{ url_for('enterprise_page')}}"class="button">{{user.enterprise_name}}</a>
+            <a href="{{ url_for('enterprise_page_specific', name=user.enterprise_name)}}"class="button">{{user.enterprise_name}}</a>
             {% endif%}
             <a href="{{ url_for('logout') }}" class="button">LOGOUT</a>
             {% else %}
