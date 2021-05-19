@@ -1,4 +1,5 @@
 @import url("base.css");
+@import url('https://fonts.googleapis.com/css2?family=Tangerine:wght@700&display=swap');
 
 body {
     background: black;
@@ -11,20 +12,30 @@ body {
 
 h1{
     color: rgb(255, 255, 255);
+    justify-content: center;
     text-align: center;
-    font-family: 'Space Mono';
+    text-shadow: 4px 4px 5px #000000;
+    font-family: "Poppins", sans-serif;
     font-size: 600%;
-    position:absolute;
-    top: 20%;
-    left: 23%;
-    
+    margin-top: 220px;
 }
+
+h1:hover{
+    transition: all 0.5s ease;
+    color: rgba(211, 0, 105, 0.7);
+    cursor: pointer;
+}
+
 h2{
     color: rgb(255, 255, 255);
     text-align: center;
+    text-shadow: 4px 4px 5px #000000;
     font-size: 300%;
     font-family: 'Space Mono';
-    position:absolute;
-    top: 55%;
-    left: 35%;
+}
+
+h2:hover{
+    transition: all 0.5s ease;
+    color: rgba(211, 0, 105, 0.7);
+    cursor: pointer;
 }
