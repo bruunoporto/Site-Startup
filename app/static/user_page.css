@@ -22,32 +22,25 @@ body {
 }
 
 .enterprises{
-    background-color: rgba(0,0,0, 0.5);
     color:white;
+    display: grid;
     align-items: center;
     font-family:'Poppins';
+    margin-left:15%;
+    margin-right: 15%;
+    background-image: url("https://www.cartacapital.com.br/wp-content/uploads/2019/05/mcd-curacao-1200x720.png");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-position: center;
     border: white solid 1px;
     border-radius: 5px;
-    height: 130px;
-    margin-left: 15%;
-    margin-right: 15%;
-    margin-bottom: 2%;
-}
-
-
-p{
-    text-align: top;
-    text-align: left;
-    margin-top: 10px;
-}
-
-#text{
-    text-align: bottom;
-    text-align: left;
+    margin-top: 1%;
 }
 
 .enterprises p{
-    margin-left: 1%;
+    margin-left: 2%;
 }
 
 .enterprises a{
