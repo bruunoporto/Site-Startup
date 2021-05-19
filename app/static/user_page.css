@@ -22,15 +22,18 @@ body {
 }
 
 .enterprises{
+    background-color: rgba(0,0,0, 0.5);
     color:white;
     align-items: center;
     font-family:'Poppins';
-    margin-bottom: 2%;
     border: white solid 1px;
     border-radius: 5px;
     height: 130px;
-    background-color: rgba(0,0,0, 0.5);
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 2%;
 }
+
 
 p{
     text-align: top;
