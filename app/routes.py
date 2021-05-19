@@ -105,6 +105,10 @@ def enterprise_page_specific(name):
         for post in Post.query.all():
            if post.id > id_max:
             id_max = post.id+1
+            if id_max == Post.query.filter_by(id = id_max).first().id:
+                id_max = id_max +1
+            else :
+                break
         post = Post(id = id_max,body=text, timestamp = datetime.datetime.now().timestamp(), empresa_id=enterpriseS.id, author_id = current_user.id)
         flash("Post Salvo com Sucesso")
         db.session.add(post)
