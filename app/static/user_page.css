@@ -26,5 +26,6 @@ body {
     display: grid;
     align-items: center;
     font-family:'Poppins';
+    margin-left:15%;
 }
 
