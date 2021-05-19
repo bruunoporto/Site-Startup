@@ -26,6 +26,7 @@ class RegisterUser(FlaskForm):
     password = PasswordField("Senha", validators=[DataRequired("Insira sua senha")])
     password_confirmation = PasswordField("Repita sua Senha", validators=[DataRequired("Insira sua senha"),EqualTo('password', message="As duas senhas devem ser iguais")])
     submit = SubmitField("Registrar")
+    
 class RegisterEnterprise(FlaskForm):
     username = StringField("Nome Fantasia", validators=[DataRequired("Insira seu Nome")])
     document = StringField("CNPJ", validators=[DataRequired("Insira seu CNPJ"),IntegerCheck])

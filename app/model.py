@@ -36,7 +36,7 @@ class empresa(UserMixin, db.Model):
     longitude = db.Column(db.Float)
     district = db.Column(db.String(50))
     street = db.Column(db.String(120))
-
+    posts = db.relationship("Post", backref="enterprise")
     def __repr__(self):
         return "<User {}>".format(self.enterprise_name)
 
@@ -46,6 +46,15 @@ class empresa(UserMixin, db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(140))
+    image = db.Column(db.String(200))
+    timestamp = db.Column(db.Integer, index=True)
+    empresa_id = db.Column(db.Integer, db.ForeignKey('empresa.id'))
+    author_id = db.Column(db.Integer())
+    def __repr__(self):
+        return '<Post {}>'.format(self.body)
 
 @login.user_loader
 def load_user(id):

@@ -2,16 +2,18 @@ from flask_login.utils import login_required, logout_user
 from werkzeug.security import generate_password_hash
 from app import app, db
 from flask import render_template, request, redirect, url_for, flash, session
-from app.model import usuario, empresa
+from app.model import usuario, empresa, Post
 from app.forms import LoginForm, RegisterEnterprise, RegisterUser
 from flask_login import login_user, current_user, login_required, logout_user
 from werkzeug.urls import url_parse
+import datetime
 ##########################################################################
 
 
 @app.route("/")
 @app.route("/index")
-def main_page():                              # PAGINA PRINCIPAL
+def main_page():
+    db.create_all()                              # PAGINA PRINCIPAL
     return render_template('main_page.html', title="Home", css_file="main_page.css", user=current_user)
 
 
@@ -89,13 +91,31 @@ def user_register_page():
 
 @app.route("/enterprise_page", methods=["POST", "GET"])
 @login_required
-def enterprise_page():                        # PAGINA DE EMPRESA
+def enterprise_page():                     # PAGINA DE EMPRESA
     return render_template('enterprise_page.html', title="Empresa", css_file="enterprise_page.css",user=current_user, enterprise= current_user)
 
 @app.route("/enterprise_page/<name>", methods=["POST", "GET"])
 @login_required
 def enterprise_page_specific(name):                        # PAGINA DE EMPRESA
-    return render_template('enterprise_page.html', title=name, css_file="enterprise_page.css",user=current_user, enterprise=empresa.query.filter_by(enterprise_name=name).first())
+    if request.method == "GET":
+        return render_template('enterprise_page.html', title=name, css_file="enterprise_page.css",user=current_user, enterprise=empresa.query.filter_by(enterprise_name=name).first(), posts=Post.query.all())
+        
+        
+
+@app.route("/posts", methods=["POST","GET"])
+def posts(enterpriseS):
+    text = request.form["feedback"]
+    for i in range(20):
+        id = int(Post.query.filter_by(i).first())
+        if id == i:
+            found = True
+    if not found:
+        id = 0
+    post = Post(id = id,body=text, timestamp = datetime.datetime.now().timestamp(), empresa_id=enterpriseS.id)
+    flash("Post Salvo com Sucesso")
+    db.session.add(post)
+    db.session.commit()
+    return redirect(url_for('enterprise_page_specific',name=enterpriseS.enterprise_name))
 
 @app.route("/user_page", methods=["POST", "GET"])
 @login_required
@@ -111,4 +131,3 @@ def logout():
 
 
 
-app.run()

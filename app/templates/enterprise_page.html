@@ -24,12 +24,19 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s&callback=initMap&libraries=&v=weekly" async></script>
 <div class="alignment">
+{% for post in posts%}
+<div><p>{{ post.author.username }} disse: <b>{{ post.body }}</b></p></div>
+{% endfor %}
 <!-- Rio de Janeiro - Google Maps API key: "AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s" -->
 <section class="container">
+  {% if current_user.username %}
   <h1>Envie-nos seu feedback</h1><br><br>
-      <form action="">
+  {% else %}
+  <h1>Adicione Posts!</h1><br><br>
+  {% endif %}
+      <form action="{{url_for('posts', enterpriseS = enterprise)}}">
           <div class="inputs">
-              <textarea id="feedback" name="feedback" rows="4" cols="50">Digite seu feedback...</textarea><br><br>
+              <textarea id="feedback" name="feedback" rows="4" cols="50">Digite sua mensagem...</textarea><br><br>
           </div>
           <input id="botao" type="submit" value="ENVIAR">
       </form>
