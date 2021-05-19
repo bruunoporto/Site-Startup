@@ -54,3 +54,7 @@ ol li{
     display: inline-block;
     list-style: none;
 }
+
+a#main_page.button{
+    display: none;
+}

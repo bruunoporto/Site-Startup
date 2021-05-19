@@ -21,11 +21,12 @@ section.container{
     background-color: rgba(87, 02, 43, 0.45);
     width: 110%;
     height: 100%;
-    padding: 2%;
+    padding: 0%;
     border-radius: 10px;
     align-items: center;
     display: grid;
     justify-content: center;
+    margin-top: 50px;
 
 }
 
@@ -84,4 +85,8 @@ form label{
     color: white;
     font-family: "Poppins";
     font-size: 13px;
+}
+
+a#login_page.button{
+    display: none;
 }

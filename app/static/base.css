@@ -21,11 +21,16 @@ a.button {
     border: none;
     color: white;
     padding: 5px 20px;
-    text-align: right;
+    text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 14px;
-    z-index: 99;
-    right: 30px;
     font-family:'Poppins';
+    font-size: 15px;
 }
+
+.menu{
+    margin-top: 10px;
+}
+
+
+

@@ -14,18 +14,18 @@
     </head>
     <body>
         <header class="menu">
-            <a href="{{ url_for('main_page') }}" class="button">HOME</a>
+            <a id="main_page" href="{{ url_for('main_page') }}" class="button">HOME</a>
             {% if user.is_authenticated %}
             {% if user.username %}
-            <a href="{{ url_for('user_page')}}"class="button">{{user.username}}</a>
+            <a id="user_page" href="{{ url_for('user_page')}}"class="button">{{user.username}}</a>
             {% else %}
-            <a href="{{ url_for('enterprise_page_specific', name=user.enterprise_name)}}"class="button">{{user.enterprise_name}}</a>
+            <a id="enterprise_page" href="{{ url_for('enterprise_page_specific', name=user.enterprise_name)}}"class="button">{{user.enterprise_name}}</a>
             {% endif%}
-            <a href="{{ url_for('logout') }}" class="button">LOGOUT</a>
+            <a id="logout" href="{{ url_for('logout') }}" class="button">LOGOUT</a>
             {% else %}
-            <a href="{{ url_for('enterprise_register_page') }}" class="button">SEJA UM ANUNCIANTE</a>
-            <a href="{{ url_for('user_register_page') }}" class="button">REGISTRO</a>
-            <a href="{{ url_for('login_page') }}" class="button">LOGIN</a>
+            <a id="enterprise_register_page" href="{{ url_for('enterprise_register_page') }}" class="button">SEJA UM ANUNCIANTE</a>
+            <a id="user_register_page" href="{{ url_for('user_register_page') }}" class="button">REGISTRO</a>
+            <a id="login_page" href="{{ url_for('login_page') }}" class="button">LOGIN</a>
             {% endif %}
         </header>
         {% with messages = get_flashed_messages() %}

@@ -78,3 +78,7 @@ form input[type=submit]:hover{
     background-color: rgba(87, 02, 43, 1);
     color: white;
 }
+
+a#user_register_page.button{
+    display: none;
+}
