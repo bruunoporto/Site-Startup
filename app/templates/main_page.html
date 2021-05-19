@@ -1,5 +1,24 @@
 {% extends "base.html" %}
 {% block content %}
+<body>
     <h1>Qual é a boa?</h1>
     <h2>Rio de Janeiro</h2>
+
+    
+    <footer>
+        <ol>
+            <li>
+                <a target="_blank" href="https://github.com/bruunoporto/Site-Startup">
+                    <img
+                        src="{{ url_for('static', filename='git-logo.png') }}"
+                    width="25"
+                    height="25">
+                    </img>
+                </a>
+            </li>
+        </ol>
+    </footer>
+
+
+</body>
 {% endblock %}

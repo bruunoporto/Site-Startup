@@ -15,19 +15,19 @@ p{
 h1{
     color:white;
     font-family: "Poppins";
-    display:grid;
+    display: grid;
     align-items: center;
     justify-content: center;
 }
 h3{
     color:white;
-    font-family:Poppins;
-    display:grid;
+    font-family: Poppins;
+    display: grid;
     align-items: center;
     justify-content: center;
 }
 .mapouter{
-    display:grid;
+    display: grid;
     align-items: center;
     justify-content: center;
 }
