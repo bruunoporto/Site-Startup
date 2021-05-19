@@ -11,7 +11,7 @@ body {
     background: black;
     background-image: url("https://www.pixel4k.com/wp-content/uploads/2021/05/abstract-waving-4k_1620165379-1536x960.jpg");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: cover;
 }
 
 #map {
@@ -27,5 +27,19 @@ body {
     align-items: center;
     font-family:'Poppins';
     margin-left:15%;
+    margin-right: 15%;
+    background-color: rgba(0,0,0, 0.5);
+    border: white solid 1px;
+    border-radius: 5px;
+    margin-top: 1%;
 }
+.enterprises p{
+    margin-left: 1%;
+}
+
+.enterprises p a{
+    background-color: red;
+}
+
+
 
