@@ -117,6 +117,7 @@ h3{
 section.container{
     padding: 50px;
     justify-content: center;
+    margin-top: 15px;
 }
 
 p b{
