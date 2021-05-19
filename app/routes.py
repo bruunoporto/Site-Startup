@@ -101,14 +101,11 @@ def enterprise_page_specific(name):
     enterpriseS= empresa.query.filter_by(enterprise_name=name).first()
     if form.validate_on_submit():
         text = form.text.data
-        for i in range(20):
-            try:
-                id = int(Post.query.filter_by(id = i).first().id) + 1
-            except:
-                found = True
-                id = 1
-                break
-        post = Post(id = id,body=text, timestamp = datetime.datetime.now().timestamp(), empresa_id=enterpriseS.id, author_id = current_user.id)
+        id_max = 0
+        for post in Post.query.all():
+           if post.id > id_max:
+            id_max = post.id+1
+        post = Post(id = id_max,body=text, timestamp = datetime.datetime.now().timestamp(), empresa_id=enterpriseS.id, author_id = current_user.id)
         flash("Post Salvo com Sucesso")
         db.session.add(post)
         db.session.commit()
