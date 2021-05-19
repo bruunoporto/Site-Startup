@@ -18,6 +18,13 @@ h1{
     align-items: center;
     justify-content: center;
 }
+h3{
+    color:white;
+    font-family:Poppins;
+    display:grid;
+    align-items: center;
+    justify-content: center;
+}
 .mapouter{
     display:grid;
     align-items: center;
