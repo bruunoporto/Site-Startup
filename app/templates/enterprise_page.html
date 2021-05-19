@@ -42,7 +42,7 @@
           <div class="inputs">
             {{ form.hidden_tag() }}
             <p>
-                {{ form.text.label }}<br>
+                {{ form.text.label }}<br><br>
                 {{ form.text(size=32) }}<br>
                 {% for error in form.text.errors %}
                 <span style="color: red;">[{{ error }}]</span>

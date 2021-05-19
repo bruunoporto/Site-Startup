@@ -6,7 +6,6 @@ body {
     background-image: url("https://www.pixel4k.com/wp-content/uploads/2021/05/abstract-waving-4k_1620165379-1536x960.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    
 }
 p{
     color:white;
@@ -100,4 +99,36 @@ form input[type=submit]:hover{
     letter-spacing: 0.3px;
     background-color: rgba(87, 02, 43, 1);
     color: white;
+}
+
+h3{
+    border: white solid 1px;
+    border-radius: 4px;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: rgba(0,0,0, 0.5);
+    font-size: 16px;
+}
+
+.alignment p{
+    text-align: center;
+}
+
+section.container{
+    padding: 50px;
+    justify-content: center;
+}
+
+p b{
+    font-family: "Poppins", sans-serif;
+}
+
+p{
+    font-family: "Poppins", sans-serif;
+}
+
+textarea#text{
+    margin: 0px; 
+    height: 133px; 
+    width: 459px;
 }

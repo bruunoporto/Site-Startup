@@ -33,12 +33,14 @@ body {
     border-radius: 5px;
     margin-top: 1%;
 }
+
 .enterprises p{
-    margin-left: 1%;
+    margin-left: 2%;
 }
 
-.enterprises p a{
-    background-color: red;
+.enterprises a{
+    text-decoration: none;
+    color: blueviolet;
 }
 
 
