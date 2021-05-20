@@ -29,12 +29,7 @@ body {
     margin-left:15%;
     margin-right: 15%;
     margin-top: 1%;
-    background-image: url("https://www.cartacapital.com.br/wp-content/uploads/2019/05/mcd-curacao-1200x720.png");
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    background-position: center;
+    background-color:rgba(0, 0, 0, 0.377);
     border: white solid 1px;
     border-radius: 5px;
 }

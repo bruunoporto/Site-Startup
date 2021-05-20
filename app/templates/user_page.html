@@ -2,7 +2,7 @@
 {% block content %}
 
 <h1>Olá, {{user.username}}</h1>
-<!--
+
 <div id="map"></div>
 
 <script>
@@ -30,7 +30,7 @@
   </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s&callback=getLocation&libraries=&v=weekly" async></script>
--->
+
 <!-- Rio de Janeiro - Google Maps API key: "AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s" -->
 
 {% for enterprise in empresa.query.limit(20).all()%}
