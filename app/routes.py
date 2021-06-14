@@ -42,10 +42,29 @@ def login_page():
         # redirect(url_for("main_page"))                             # PAGINA DE LOGIN
    
 @app.route("/event_register_page", methods=["POST", "GET"])
+@login_required
 def event_register_page():
     form = RegisterEvents()
     if form.validate_on_submit():
-        pass
+        text = form.text.data
+        name = form.name.data
+        id_max = 0
+        for post in Post.query.all():
+           if post.id > id_max:
+            id_max = post.id+1
+            try:
+                if id_max == Post.query.filter_by(id = id_max).first().id:
+                    id_max = id_max +1
+                    print(id_max)
+                else :
+                    break
+            except:
+                break
+        post = Event(id = id_max,body=text, timestamp = datetime.datetime.now().timestamp(), empresa_id=current_user.id,name = name)
+        flash("Evento Salvo com Sucesso")
+        db.session.add(post)
+        db.session.commit()
+        return redirect(url_for('enterprise_page_specific',name=current_user.enterprise_name))
     return render_template('event_register_page.html', user=current_user, form = form, css_file="user_register_page.css", title="Eventos")
 
 @app.route("/enterprise_register_page", methods=["POST", "GET"])
@@ -120,12 +139,37 @@ def enterprise_page_specific(name):
         return redirect(url_for('enterprise_page_specific',name=enterpriseS.enterprise_name))                        # PAGINA DE EMPRESA
     return render_template('enterprise_page.html', title=name, css_file="enterprise_page.css",user=current_user, usuario=usuario, enterprise=empresa, posts=Post.query.filter_by(empresa_id=enterpriseS.id), form=form, events=Event.query.filter_by(empresa_id=enterpriseS.id).all())
         
-    
+@app.route("/event_page/<name>", methods=["POST", "GET"])
+@login_required
+def event_page(name):
+    form = Comments()
+    eventoo = Event.query.filter_by(name=name).first()
+    enterpriseS= empresa.query.filter_by(id=eventoo.empresa_id).first()
+    if form.validate_on_submit():
+        text = form.text.data
+        id_max = 0
+        for post in Post.query.all():
+           if post.id > id_max:
+            id_max = post.id+1
+            try:
+                if id_max == Post.query.filter_by(id = id_max).first().id:
+                    id_max = id_max +1
+                    print(id_max)
+                else :
+                    break
+            except:
+                break
+        post = Post(id = id_max,body=text, timestamp = datetime.datetime.now().timestamp(), event_id=eventoo.id, author_id = current_user.id)
+        flash("Post Salvo com Sucesso")
+        db.session.add(post)
+        db.session.commit()
+        return redirect(url_for('event_page',name=name))                        # PAGINA DE EMPRESA
+    return render_template('event_page.html', title=name, css_file="enterprise_page.css",user=current_user, usuario=usuario, enterprise=empresa, posts=Post.query.filter_by(event_id=eventoo.id), form=form, body=eventoo.body, id  =eventoo.empresa_id )    
 
 @app.route("/user_page", methods=["POST", "GET"])
 @login_required
 def user_page():                              # PAGINA DE USUARIO
-    return render_template('user_page.html', title="Usuario", empresa = empresa ,css_file="user_page.css", user=current_user)
+    return render_template('user_page.html', title="Usuario", eventos = Event ,css_file="user_page.css", user=current_user)
 
 
 @app.route('/logout')

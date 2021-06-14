@@ -33,13 +33,13 @@
 -->
 <!-- Rio de Janeiro - Google Maps API key: "AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s" -->
 
-{% for enterprise in empresa.query.limit(20).all()%}
+{% for evento in eventos.query.limit(20).all()%}
 <div class="enterprises">
   <p>
-    <a href="{{url_for('enterprise_page_specific',name=enterprise.enterprise_name)}}">{{ enterprise.enterprise_name }}</a>
+    <a href="{{url_for('event_page',name=evento.name)}}">{{ evento.name }}</a>
     <br><br><br><br> 
-    Endereço: 
-    <b>{{ enterprise.street }}</b>
+    Descrição: 
+    <b>{{ evento.body }}</b>
   </p>
 </div>
 

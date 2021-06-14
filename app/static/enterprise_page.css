@@ -26,6 +26,20 @@ h3{
     align-items: center;
     justify-content: center;
 }
+h2{
+    color:white;
+    font-family: Poppins;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+h5{
+    color:white;
+    font-family: Poppins;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
 .mapouter{
     display: grid;
     align-items: center;

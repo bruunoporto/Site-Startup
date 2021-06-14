@@ -53,6 +53,7 @@ class Post(db.Model):
     timestamp = db.Column(db.Integer, index=True)
     empresa_id = db.Column(db.Integer, db.ForeignKey('empresa.id'))
     author_id = db.Column(db.Integer())
+    event_id = db.Column(db.Integer())
     def __repr__(self):
         return '<Post {}>'.format(self.body)
 
@@ -76,3 +77,4 @@ def load_user(id):
         load = empresa.query.get(int(id))
     return load
 
+db.create_all()
