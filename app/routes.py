@@ -2,8 +2,8 @@ from flask_login.utils import login_required, logout_user
 from werkzeug.security import generate_password_hash
 from app import app, db
 from flask import render_template, request, redirect, url_for, flash, session
-from app.model import usuario, empresa, Post
-from app.forms import LoginForm, RegisterEnterprise, RegisterUser, Comments
+from app.model import usuario, empresa, Post, Event
+from app.forms import LoginForm, RegisterEnterprise, RegisterUser, Comments, RegisterEvents
 from flask_login import login_user, current_user, login_required, logout_user
 from werkzeug.urls import url_parse
 import datetime
@@ -41,7 +41,12 @@ def login_page():
         #flash("Precisa inserir informação para user {}, lembra de mim = {}".format(form.username.data, form.remember_me.data))
         # redirect(url_for("main_page"))                             # PAGINA DE LOGIN
    
-
+@app.route("/event_register_page", methods=["POST", "GET"])
+def event_register_page():
+    form = RegisterEvents()
+    if form.validate_on_submit():
+        pass
+    return render_template('event_register_page.html', user=current_user, form = form, css_file="user_register_page.css", title="Eventos")
 
 @app.route("/enterprise_register_page", methods=["POST", "GET"])
 def enterprise_register_page():
@@ -89,11 +94,6 @@ def user_register_page():
         return redirect(url_for("login_page"))
     return render_template('user_register_page.html', title="Registro", css_file="user_register_page.css", form=form,  user=current_user)
 
-@app.route("/enterprise_page", methods=["POST", "GET"])
-@login_required
-def enterprise_page():                     # PAGINA DE EMPRESA
-    return render_template('enterprise_page.html', title="Empresa", css_file="enterprise_page.css",user=current_user, enterprise= current_user)
-
 @app.route("/enterprise_page/<name>", methods=["POST", "GET"])
 @login_required
 def enterprise_page_specific(name):
@@ -118,7 +118,7 @@ def enterprise_page_specific(name):
         db.session.add(post)
         db.session.commit()
         return redirect(url_for('enterprise_page_specific',name=enterpriseS.enterprise_name))                        # PAGINA DE EMPRESA
-    return render_template('enterprise_page.html', title=name, css_file="enterprise_page.css",user=current_user, usuario=usuario, enterprise=empresa, posts=Post.query.filter_by(empresa_id=enterpriseS.id), form=form)
+    return render_template('enterprise_page.html', title=name, css_file="enterprise_page.css",user=current_user, usuario=usuario, enterprise=empresa, posts=Post.query.filter_by(empresa_id=enterpriseS.id), form=form, events=Event.query.filter_by(empresa_id=enterpriseS.id).all())
         
     
 

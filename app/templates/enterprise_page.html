@@ -26,6 +26,19 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s&callback=initMap&libraries=&v=weekly" async></script>
 
 <div class="alignment">
+<h2>Eventos</h2>
+{% if events|length == 0 %}
+  <h5> Não existe nenhum evento vinvulado a esta empresa</h5>
+{% else %}
+{% for event in events%}
+<div>
+  <h5>{{ event.name }}</h5>
+  <p>{{ event.body }}</p></div>
+{% endfor %}
+{% endif %}
+{% if not current_user.username %}
+<a href={{ url_for("event_register_page")}}> Adicionar Mais Eventos</a>
+{% endif %}
 {% for post in posts%}
 {% if usuario.query.filter_by(id = post.author_id).first().username %}
 <div><p>{{ usuario.query.filter_by(id = post.author_id).first().username }} disse: <b>{{ post.body }}</b></p></div>

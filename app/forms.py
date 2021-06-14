@@ -45,3 +45,8 @@ class Comments(FlaskForm):
     files = FileField("De upload em sua foto")
     text = TextAreaField("Escreva seu Comentário", validators=[DataRequired("Escreva seu comentário!")]) 
     submit = SubmitField("Registrar")
+
+class RegisterEvents(FlaskForm):
+    name = StringField("Escreva o nome do seu evento", validators=[DataRequired("Insira o nome do evento")])
+    text = TextAreaField("Escreva a descrição do evento", validators=[DataRequired("Escreva seu comentário!")]) 
+    submit = SubmitField("Registrar")

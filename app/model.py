@@ -56,6 +56,18 @@ class Post(db.Model):
     def __repr__(self):
         return '<Post {}>'.format(self.body)
 
+class Event(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    body = db.Column(db.String(200))
+    image = db.Column(db.String(200))
+    timestamp = db.Column(db.Integer, index=True)
+    empresa_id = db.Column(db.Integer)
+    name = db.Column(db.String(200))
+    latitude = db.Column(db.Float)
+    longitude = db.Column(db.Float)
+    def __repr__(self):
+        return '<Event{}>'.format(self.body)
+
 @login.user_loader
 def load_user(id):
     if usuario.query.get(int(id)):
@@ -63,5 +75,4 @@ def load_user(id):
     else:
         load = empresa.query.get(int(id))
     return load
-
 
