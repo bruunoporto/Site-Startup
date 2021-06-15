@@ -46,6 +46,7 @@ def login_page():
 def event_register_page():
     form = RegisterEvents()
     if form.validate_on_submit():
+        return form
         text = form.text.data
         name = form.name.data
         id_max = 0

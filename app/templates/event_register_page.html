@@ -37,18 +37,49 @@
             {% endfor %}
         </p>
         <p>
+          {{ form.interest.label }}
+          {{ form.interest }}<br>
+          {% for error in form.interest.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+      </p>
+        <p>
           {{ form.localization }}{{ form.localization.label }}
           {% for error in form.localization.errors %}
           <span style="color: red;">[{{ error }}]</span>
           {% endfor %}
       </p>
+      
+    <script>
+      var button = document.getElementById("localization");
+      button.addEventListener("click",appear);
+      function appear(){
+      if (button.checked){
+        console.log(button.checked);
+        document.getElementsByClassName("hidden")[0].style.display = "block";
+      }
+      else{
+        console.log(button.checked);
+        document.getElementsByClassName("hidden")[0].style.display = "none";
+      }
+      }
+    </script>
+    <div class="hidden" style="display: none;">
       <p>
-        {{ form.interest.label }}
-        {{ form.interest }}<br>
-        {% for error in form.interest.errors %}
+        {{ form.latitude.label }}<br><br>
+        {{ form.latitude }}<br>
+        {% for error in form.latitude.errors %}
         <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
     </p>
+      <p>
+        {{ form.longitude.label }}<br><br>
+        {{ form.longitude }}<br>
+        {% for error in form.longitude.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+  </div>
         </div>
         <p>{{ form.submit() }}</p> 
       </form>

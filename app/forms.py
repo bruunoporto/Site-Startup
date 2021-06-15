@@ -8,6 +8,8 @@ def IntegerCheck(form, field):
     try:
         float(field.data)
     except:
+        if field.data == "":
+            return 0
         if str(field.label)[12:20] == "latitude" or str(field.label)[12:21] == "longitude":
             raise ValidationError('O dado deve ser um número, utilizando ponto como separador da parte inteira para a decimal')
         else:
@@ -54,4 +56,6 @@ class RegisterEvents(FlaskForm):
     localization = BooleanField("O evento é em uma localização diferente da da minha empresa")
     interest = SelectField("Tipo do Evento :", choices=[('animado', 'Animado'), ('calmo', 'Calmo'), ('ambos', 'Ambos')],validators=[DataRequired("Insira o tipo do evento")])
     date = DateField("Data do evento :",validators=[DataRequired("Insira a data do evento")])
+    latitude = StringField("Latitude da sua localização", validators=[IntegerCheck])
+    longitude = StringField("Longitude da sua localização", validators=[IntegerCheck])
     submit = SubmitField("Registrar")
