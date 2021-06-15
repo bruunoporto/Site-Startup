@@ -22,6 +22,33 @@
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
+            <p>
+              {{ form.date.label }}
+              {{ form.date(size=32) }}<br>
+              {% for error in form.date.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+          </p>
+          <p>
+            {{ form.age_group.label }}
+            {{ form.age_group }}<br>
+            {% for error in form.age_group.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+          {{ form.localization }}{{ form.localization.label }}
+          {% for error in form.localization.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+      </p>
+      <p>
+        {{ form.interest.label }}
+        {{ form.interest }}<br>
+        {% for error in form.interest.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
         </div>
         <p>{{ form.submit() }}</p> 
       </form>

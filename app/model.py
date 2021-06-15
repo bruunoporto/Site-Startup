@@ -2,6 +2,7 @@ import sqlite3
 from app import db, login
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from sqlalchemy.dialects.postgresql import ARRAY
 
 
 class usuario(UserMixin, db.Model):
@@ -66,6 +67,10 @@ class Event(db.Model):
     name = db.Column(db.String(200))
     latitude = db.Column(db.Float)
     longitude = db.Column(db.Float)
+    event_type = db.Column(db.String(8))
+    rank = db.Column(db.Float)
+    avaliations = db.Column(db.Integer)
+    age_groups = db.Column(db.String)
     def __repr__(self):
         return '<Event{}>'.format(self.body)
 
@@ -76,5 +81,6 @@ def load_user(id):
     else:
         load = empresa.query.get(int(id))
     return load
+
 
 db.create_all()
