@@ -42,12 +42,67 @@
 <section class="container">
   {% if current_user.username %}
   <h1>Envie-nos seu feedback</h1><br><br>
+  <form class="rating">
+    <label>
+      <input type="radio" name="stars" value="1" />
+      <span class="icon">★</span>
+    </label>
+    <label>
+      <input type="radio" name="stars" value="2" />
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+    </label>
+    <label>
+      <input type="radio" name="stars" value="3" />
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+      <span class="icon">★</span>   
+    </label>
+    <label>
+      <input type="radio" name="stars" value="4" />
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+    </label>
+    <label>
+      <input type="radio" name="stars" value="5" />
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+      <span class="icon">★</span>
+    </label>
+  </form>
   {% else %}
   <h1>Adicione Posts!</h1><br><br>
   {% endif %}
-      <form action="{{url_for('enterprise_page_specific', name = title)}}", method='post', novalidate>
+  <script>
+    var formu = document.getElementsByClassName("rating")[0];
+    formu.addEventListener("click",check); 
+    function check(){
+    var ele = document.getElementsByTagName('input');
+              for(i = 0; i < ele.length; i++) {  
+                  if(ele[i].name="stars") {  
+                      if(ele[i].checked) {
+                        document.getElementById("text").value = String(ele[i].value);
+                        console.log(String(ele[i].value));
+                      }}}};
+  </script>
+      <form action="{{url_for('event_page', name = title)}}", method='post', novalidate>
           <div class="inputs">
             {{ form.hidden_tag() }}
+            <div style="display: none;">
+            <p>
+              {{ form.evaluation.label }}
+              {{ form.evaluation(size=32) }}
+            </p>  
+            </div>
+            <p>
+              {% for error in form.evaluation.errors %}
+              <span style="color: red;">[{{ error }}]</span>
+              {% endfor %}
+          </p>
             <p>
                 {{ form.text.label }}<br><br>
                 {{ form.text(size=32) }}<br>

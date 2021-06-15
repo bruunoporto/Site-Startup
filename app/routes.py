@@ -154,8 +154,8 @@ def enterprise_page_specific(name):
 def event_page(name):
     form = Comments()
     eventoo = Event.query.filter_by(name=name).first()
-    enterpriseS= empresa.query.filter_by(id=eventoo.empresa_id).first()
     if form.validate_on_submit():
+        return form.text.data
         text = form.text.data
         id_max = 0
         for post in Post.query.all():
@@ -174,7 +174,7 @@ def event_page(name):
         db.session.add(post)
         db.session.commit()
         return redirect(url_for('event_page',name=name))                        # PAGINA DE EMPRESA
-    return render_template('event_page.html', title=name, css_file="enterprise_page.css",user=current_user, usuario=usuario, enterprise=empresa, posts=Post.query.filter_by(event_id=eventoo.id), form=form, body=eventoo.body, id  =eventoo.empresa_id )    
+    return render_template('event_page.html', title=name, css_file="event_page.css",user=current_user, usuario=usuario, enterprise=empresa, posts=Post.query.filter_by(event_id=eventoo.id), form=form, body=eventoo.body, id  =eventoo.empresa_id )    
 
 @app.route("/user_page", methods=["POST", "GET"])
 @login_required

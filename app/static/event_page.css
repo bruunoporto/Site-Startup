@@ -1,0 +1,152 @@
+@import url("base.css");
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url("star.css");
+
+body {
+    background: black;
+    background-image: url("https://www.pixel4k.com/wp-content/uploads/2021/05/abstract-waving-4k_1620165379-1536x960.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+p{
+    color:white;
+}
+h1{
+    color:white;
+    font-family: "Poppins";
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+h3{
+    color:white;
+    font-family: Poppins;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+h2{
+    color:white;
+    font-family: Poppins;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+h5{
+    color:white;
+    font-family: Poppins;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+.mapouter{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+#gmap_canvas{
+    border-radius: 8px;
+}
+
+#map {
+    height: 400px;
+    width: 70%;
+    border-radius: 8px;
+    margin: auto; 
+}
+
+form input[type=text]{
+    border-radius: 4px;
+    padding-left: 5px;
+    width: 230px;
+}
+.alignment{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+section.container{
+    background-color: rgba(87, 02, 43, 0.45);
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.inputs input{
+    outline: none;
+}
+
+.inputs{
+    margin: auto;
+    text-align: center;
+}
+
+textarea#feedback{
+    width: 370px;
+    border-radius: 4px;
+    padding-left: 4px;
+    font-family: "Poppins", sans-serif;
+}
+
+.inputs input::placeholder{
+    color: rgba(13, 0, 26, 0.8);
+}
+
+input#botao{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+form input[type=submit]{
+    border-radius: 4px;
+    padding-left: 0px;
+    width: 230px;
+    transition: all 0.3s ease;
+}
+
+form input[type=submit]:hover{
+    letter-spacing: 0.3px;
+    background-color: rgba(87, 02, 43, 1);
+    color: white;
+}
+
+h3{
+    border: white solid 1px;
+    border-radius: 4px;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: rgba(0,0,0, 0.5);
+    font-size: 16px;
+}
+
+.alignment p{
+    text-align: center;
+}
+
+section.container{
+    padding: 50px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+p b{
+    font-family: "Poppins", sans-serif;
+    letter-spacing: 1px;
+}
+
+p{
+    font-family: "Poppins", sans-serif;
+}
+
+textarea#text{
+    margin: 0px; 
+    height: 133px; 
+    width: 459px;
+}
+
+input#files{
+    margin-top: 5%;
+}

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, SelectField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextAreaField, SelectField, HiddenField
 from wtforms.fields.html5 import DateField
 from wtforms.fields.simple import FileField
 from wtforms.validators import DataRequired, EqualTo, Email,  ValidationError
@@ -46,12 +46,13 @@ class RegisterEnterprise(FlaskForm):
     
 class Comments(FlaskForm):
     files = FileField("De upload em sua foto")
+    evaluation = StringField("")
     text = TextAreaField("Escreva seu Comentário", validators=[DataRequired("Escreva seu comentário!")]) 
     submit = SubmitField("Registrar")
 
 class RegisterEvents(FlaskForm):
     name = StringField("Escreva o nome do seu evento", validators=[DataRequired("Insira o nome do evento")])
-    text = TextAreaField("Escreva a descrição do evento", validators=[DataRequired("Escreva seu comentário!")]) 
+    text = TextAreaField("Escreva a descrição do evento")#, validators=[DataRequired("Escreva seu comentário!")]) 
     age_group =SelectField("Faixa Etária :", choices=[('18-23', '18-23'), ('23-32', '23-32'), ('32-44', '32-44'), ('44-60', '44-60'), ('60+','60+'),('todos','Todas as Idades')],validators=[DataRequired("Insira a Faixa Etária")])
     localization = BooleanField("O evento é em uma localização diferente da da minha empresa")
     interest = SelectField("Tipo do Evento :", choices=[('animado', 'Animado'), ('calmo', 'Calmo'), ('ambos', 'Ambos')],validators=[DataRequired("Insira o tipo do evento")])
