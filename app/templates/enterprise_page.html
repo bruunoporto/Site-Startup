@@ -32,7 +32,7 @@
 {% else %}
 {% for event in events%}
 <div>
-  <h5>{{ event.name }}</h5>
+  <h5><a href={{ url_for("event_page", name= event.name)}}>{{ event.name }}</a></h5>
   <p>{{ event.body }}</p></div>
 {% endfor %}
 {% endif %}

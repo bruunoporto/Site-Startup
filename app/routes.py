@@ -46,22 +46,31 @@ def login_page():
 def event_register_page():
     form = RegisterEvents()
     if form.validate_on_submit():
-        return form
         text = form.text.data
         name = form.name.data
+        age_group = form.age_group.data
+        interest = form.interest.data
+        location = form.localization.data
+        if location:
+            latitude = form.latitude.data
+            longitude = form.longitude.data
+        else:
+            latitude = current_user.latitude
+            longitude = current_user.longitude
+        date =  datetime.datetime.timestamp(datetime.datetime.combine(form.date.data, datetime.datetime.min.time()))
         id_max = 0
-        for post in Post.query.all():
-           if post.id > id_max:
-            id_max = post.id+1
+        for event in Event.query.all():
+           if event.id > id_max:
+            id_max = event.id+1
             try:
-                if id_max == Post.query.filter_by(id = id_max).first().id:
+                if id_max == Event.query.filter_by(id = id_max).first().id:
                     id_max = id_max +1
                     print(id_max)
                 else :
                     break
             except:
                 break
-        post = Event(id = id_max,body=text, timestamp = datetime.datetime.now().timestamp(), empresa_id=current_user.id,name = name)
+        post = Event(id = id_max,body=text, timestamp = date, empresa_id=current_user.id,name = name, latitude=latitude,longitude = longitude, age_groups=age_group, event_type=interest)
         flash("Evento Salvo com Sucesso")
         db.session.add(post)
         db.session.commit()
