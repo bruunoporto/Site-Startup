@@ -1,8 +1,8 @@
 .rating {
     display: inline-block;
     position: relative;
-    height: 50px;
-    line-height: 50px;
+    left: 25%;
+    line-height: 15px;
     font-size: 50px;
   }
   
@@ -39,7 +39,7 @@
   }
   
   .rating label input {
-    position: absolute;
+    position: center;
     top: 0;
     left: 0;
     opacity: 0;

@@ -2,9 +2,9 @@
 {% block content %}
 <h1>{{title}}</h1>
 <h3>
-  Descrição {{ body }}
+  Descrição: <br> {{ body }}
   <br>
-  Evento por: <a href={{url_for("enterprise_page_specific", name = enterprise.query.filter_by(id=id).first().enterprise_name)}}> {{enterprise.query.filter_by(id=id).first().enterprise_name}}</a>
+  Evento por: <br><a href={{url_for("enterprise_page_specific", name = enterprise.query.filter_by(id=id).first().enterprise_name)}}> {{enterprise.query.filter_by(id=id).first().enterprise_name}}</a>
 </h3>
 
 <div id="map"></div>
