@@ -55,6 +55,7 @@ class Post(db.Model):
     empresa_id = db.Column(db.Integer, db.ForeignKey('empresa.id'))
     author_id = db.Column(db.Integer())
     event_id = db.Column(db.Integer())
+    rank = db.Column(db.Integer())
     def __repr__(self):
         return '<Post {}>'.format(self.body)
 

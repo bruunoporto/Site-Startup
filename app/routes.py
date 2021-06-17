@@ -146,16 +146,23 @@ def enterprise_page_specific(name):
 def event_page(name):
     form = Comments()
     eventoo = Event.query.filter_by(name=name).first()
-    if form.validate_on_submit():
-        return form.data
+    if form.is_submitted():
         text = form.text.data
+        try:
+            avaliations = eventoo.avaliations + 1
+            rank = (int(form.evaluation.data) + eventoo.rank * eventoo.avaliations) / avaliations
+        except TypeError:
+            avaliations = 1
+            rank = form.evaluation.data
         id_max = 0
         for post in Post.query.all():
-            if post.id > id_max:
+            if post.id >= id_max:
                 id_max = post.id+1
-        post = Post(id = id_max,body=text, timestamp = datetime.datetime.now().timestamp(), event_id=eventoo.id, author_id = current_user.id)
+        post = Post(id = id_max,body=text, timestamp = datetime.datetime.now().timestamp(), event_id=eventoo.id, author_id = current_user.id, rank=int(form.evaluation.data))
         flash("Post Salvo com Sucesso")
         db.session.add(post)
+        Event.query.filter_by(name=name).update(dict(rank=str(rank)))
+        Event.query.filter_by(name=name).update(dict(avaliations=str(avaliations)))
         db.session.commit()
         return redirect(url_for('event_page',name=name))                        # PAGINA DE EMPRESA
     return render_template('event_page.html', title=name, css_file="event_page.css",user=current_user, usuario=usuario, enterprise=empresa, posts=Post.query.filter_by(event_id=eventoo.id), form=form, body=eventoo.body, id  =eventoo.empresa_id )    

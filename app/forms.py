@@ -46,7 +46,7 @@ class RegisterEnterprise(FlaskForm):
     
 class Comments(FlaskForm):
     files = FileField("De upload em sua foto")
-    evaluation = TextAreaField("")
+    evaluation = TextAreaField("",validators=[DataRequired("Dê sua avaliação")])
     text = TextAreaField("Escreva seu Comentário", validators=[DataRequired("Escreva seu comentário!")]) 
     submit = SubmitField("Registrar")
 
