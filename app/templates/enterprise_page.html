@@ -31,9 +31,10 @@
   <h5> Não existe nenhum evento vinculado a esta empresa</h5>
 {% else %}
 {% for event in events%}
-<div>
+<div class="events">
   <h5><a href={{ url_for("event_page", name= event.name)}}>{{ event.name }}</a></h5>
-  <p>{{ event.body }}</p></div>
+  <p>{{ event.body }}</p>
+</div>
 {% endfor %}
 {% endif %}
 {% if not current_user.username %}
@@ -78,4 +79,5 @@
   {% endif %}
   {% endfor %}
 </aside>
+
 {% endblock %}

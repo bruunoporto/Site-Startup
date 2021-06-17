@@ -152,7 +152,7 @@ input#files{
 }
 
 .aside{
-    background-color: rgba(87, 02, 43, 0.3);
+    background-color: none;
     font-family: "Poppins", sans-serif;
     top: 0;
     right: 0;
@@ -164,15 +164,36 @@ input#files{
 }
 
 .aside p{
+    background-color: rgba(184, 184, 184, 0.2);
     text-align: center;
     border: white solid 1px;
     border-radius: 4px;
     margin: 7px;
     margin-top: 15px;
-    font-size: 13px;
+    font-size: 10%px;
 }
 
 .aside p:hover{
     letter-spacing: 0.2px;
     background-color: rgba(87, 02, 43, 0.5);
+}
+
+.aside b{
+    letter-spacing: 1px;
+}
+
+.events{
+    background-color: rgba(87, 02, 43, 0.45);
+    border-radius: 4px;
+    padding: 5%;
+}
+
+.events h5 a{
+    text-decoration: none;
+    font-size: 20px;
+    color: pink;
+}
+
+.events h5 a:hover{
+    letter-spacing: 0.2px;
 }
