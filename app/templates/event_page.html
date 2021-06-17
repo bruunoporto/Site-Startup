@@ -3,9 +3,13 @@
 <h1>{{title}}</h1>
 
 <h3>
-  Descrição {{ body }}
+  Data: {{ date}}<br>
+  Descrição {{ event.body }}
   <br>
-  Evento por: <a href={{url_for("enterprise_page_specific", name = enterprise.query.filter_by(id=id).first().enterprise_name)}}> {{enterprise.query.filter_by(id=id).first().enterprise_name}}</a>
+  Evento para : {{event.age_groups.capitalize()}}<br>
+
+  Evento por: <a href={{url_for("enterprise_page_specific", name = enterprise.query.filter_by(id=event.empresa_id).first().enterprise_name)}}> {{enterprise.query.filter_by(id=event.empresa_id).first().enterprise_name}}</a>
+  Avaliação: {{event.rank}}
 </h3>
 
 <div id="map"></div>
@@ -14,7 +18,7 @@
     // Initialize and add the map
     function initMap() {
       // The location of RJ
-      const location = { lat: {{ enterprise.query.filter_by(id=id).first().latitude }} ,lng: {{enterprise.query.filter_by(id=id).first().longitude}} };
+      const location = { lat: {{ enterprise.query.filter_by(id=event.empresa_id).first().latitude }} ,lng: {{enterprise.query.filter_by(id=event.empresa_id).first().longitude}} };
       // The map, centered at RJ
       const map = new google.maps.Map(document.getElementById("map"), {
         zoom: 12,
@@ -134,7 +138,7 @@
 <aside class="aside">
   {% for post in posts%}
   {% if usuario.query.filter_by(id = post.author_id).first().username %}
-  <div><p>{{ usuario.query.filter_by(id = post.author_id).first().username }} disse: <b>{{ post.body }}</b></p></div>
+  <div><p>{{ usuario.query.filter_by(id = post.author_id).first().username }} <br>{{post.rank}} estrelas <br> disse: <b>{{ post.body }}</b></p></div>
   {% endif %}
   {% endfor %}
 </aside>
