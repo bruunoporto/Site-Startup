@@ -28,7 +28,7 @@
 <div class="alignment">
 <h2>Eventos</h2>
 {% if events|length == 0 %}
-  <h5> Não existe nenhum evento vinvulado a esta empresa</h5>
+  <h5> Não existe nenhum evento vinculado a esta empresa</h5>
 {% else %}
 {% for event in events%}
 <div>
@@ -39,13 +39,6 @@
 {% if not current_user.username %}
 <a href={{ url_for("event_register_page")}}> Adicionar Mais Eventos</a>
 {% endif %}
-{% for post in posts%}
-{% if usuario.query.filter_by(id = post.author_id).first().username %}
-<div><p>{{ usuario.query.filter_by(id = post.author_id).first().username }} disse: <b>{{ post.body }}</b></p></div>
-{% else %}
-<div><p>{{ enterprise.query.filter_by(id = post.author_id).first().enterprise_name }} disse: <b>{{ post.body }}</b></p></div>
-{% endif %}
-{% endfor %}
 <!-- Rio de Janeiro - Google Maps API key: "AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s" -->
 <section class="container">
   {% if current_user.username %}
@@ -75,4 +68,14 @@
       </form>
     </section>
 </div>
+
+<aside class="aside">
+  {% for post in posts%}
+  {% if usuario.query.filter_by(id = post.author_id).first().username %}
+  <div><p>{{ usuario.query.filter_by(id = post.author_id).first().username }} disse: <b>{{ post.body }}</b></p></div>
+  {% else %}
+  <div><p>{{ enterprise.query.filter_by(id = post.author_id).first().enterprise_name }} disse: <b>{{ post.body }}</b></p></div>
+  {% endif %}
+  {% endfor %}
+</aside>
 {% endblock %}
