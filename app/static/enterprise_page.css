@@ -154,7 +154,7 @@ input#files{
 .aside{
     background-color: none;
     font-family: "Poppins", sans-serif;
-    top: 0;
+    top: 10%;
     right: 0;
     position: fixed;
     height: 100%;
@@ -169,8 +169,8 @@ input#files{
     border: white solid 1px;
     border-radius: 4px;
     margin: 7px;
-    margin-top: 15px;
-    font-size: 10%px;
+    margin-top: 10%;
+    font-size: 100%;
 }
 
 .aside p:hover{
@@ -195,5 +195,18 @@ input#files{
 }
 
 .events h5 a:hover{
+    letter-spacing: 0.2px;
+}
+
+.alignment a{
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    color: pink;
+    font-family: "Poppins";
+    margin: 5%;
+}
+
+.alignment a:hover{
     letter-spacing: 0.2px;
 }
