@@ -50,7 +50,7 @@
     <a href="{{url_for('event_page',name=evento.name)}}">{{ evento.name }}</a>
     <br><br><br> 
     Descrição: 
-    <s>Recomendação: 100%</s><br>
+    <s>Recomendação: {{ evento.rank}} Estrelas</s><br>
     <b>{{ evento.body }}</b>
   </p>
 </div>
