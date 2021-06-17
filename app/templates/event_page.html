@@ -32,9 +32,7 @@
 
 <div class="alignment">
 {% for post in posts%}
-{% if usuario.query.filter_by(id = post.author_id).first().username %}
-<div><p>{{ usuario.query.filter_by(id = post.author_id).first().username }} disse: <b>{{ post.body }}</b></p></div>
-{% else %}
+{% if enterprise.query.filter_by(id = post.author_id).first().enterprise_name %}
 <div><p>{{ enterprise.query.filter_by(id = post.author_id).first().enterprise_name }} disse: <b>{{ post.body }}</b></p></div>
 {% endif %}
 {% endfor %}
@@ -121,4 +119,12 @@
       </form>
     </section>
 </div>
+
+<aside class="aside">
+  {% for post in posts%}
+  {% if usuario.query.filter_by(id = post.author_id).first().username %}
+  <div><p>{{ usuario.query.filter_by(id = post.author_id).first().username }} disse: <b>{{ post.body }}</b></p></div>
+  {% endif %}
+  {% endfor %}
+</aside>
 {% endblock %}

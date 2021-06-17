@@ -150,3 +150,43 @@ textarea#text{
 input#files{
     margin-top: 5%;
 }
+
+h3 a{
+    text-decoration: none;
+    color: pink;
+}
+
+h3 a:hover{
+    letter-spacing: 0.2px;
+}
+
+.aside{
+    background-color: none;
+    font-family: "Poppins", sans-serif;
+    top: 10%;
+    right: 0;
+    position: fixed;
+    height: 100%;
+    width: 180px;
+    border-radius: 5px;
+    align-items: center;
+}
+
+.aside p{
+    background-color: rgba(184, 184, 184, 0.2);
+    text-align: center;
+    border: white solid 1px;
+    border-radius: 4px;
+    margin: 7px;
+    margin-top: 10%;
+    font-size: 100%;
+}
+
+.aside p:hover{
+    letter-spacing: 0.2px;
+    background-color: rgba(87, 02, 43, 0.5);
+}
+
+.aside b{
+    letter-spacing: 1px;
+}
