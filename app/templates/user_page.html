@@ -14,7 +14,19 @@
       var difflon = (location_destiny.position.lng()-location.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
 
       var distance = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+
       return distance;
+    }
+
+    function getFinalRanking(current_measure){
+      var median = (last_median + current_measure)/(last_counting + current_counting);
+
+      last_median = median;
+      last_counting = current_counting;
+
+      var final_ranking = (10*median - 5/3*distance)*10 // Distance has a maximun value of 30 Km
+
+      return final_ranking;
     }
 
     function getLocation() {
