@@ -73,14 +73,13 @@
 </div>
 {% endfor %}
 {% set event_list = eventos.query.all()%}
-<div class="enterprises"></div>
 {% for evento in event_list%}
 <script>
   var newlist = event_list
   if (event_list[{{loop.index-1}}] == newlist.sort(function(a, b){return b-a})[0]){
-    var content = "<p><a href="{{url_for('event_page',name=evento.name)}}">{{ evento.name }}</a><br><br><br> Descrição: {% if evento.rank %}<s>Recomendação: {{ evento.rank}} Estrelas</s><br>{% endif %}<b>{{ evento.body }}</b></p>"
-    console.log("yay")
+    var content = "<p><a href="{{url_for('event_page',name=evento.name)}}">{{ evento.name }}</a><br><br><br> Descrição: {% if evento.rank %}<s>Recomendação: {{ evento.rank}} Estrelas</s><br>{% endif %}<b>{{ evento.body }}</b></p>";
     document.getElementsByClassName("enterprises")[0].insertAdjacentHTML('afterbegin', content);
+    event_list.pop({{loop.index-1}})
   }
 </script>
 
