@@ -22,7 +22,7 @@
         navigator.geolocation.getCurrentPosition(initMap);
       }
     }
-    
+
     // Initialize and add the map
     function initMap(position) {
       // The location of user
@@ -48,8 +48,9 @@
 <div class="enterprises">
   <p>
     <a href="{{url_for('event_page',name=evento.name)}}">{{ evento.name }}</a>
-    <br><br><br><br> 
+    <br><br><br> 
     Descrição: 
+    <s>Recomendação: 100%</s><br>
     <b>{{ evento.body }}</b>
   </p>
 </div>
