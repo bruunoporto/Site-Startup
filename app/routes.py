@@ -147,6 +147,7 @@ def event_page(name):
     form = Comments()
     eventoo = Event.query.filter_by(name=name).first()
     if form.is_submitted():
+        return form.data
         text = form.text.data
         try:
             avaliations = eventoo.avaliations + 1
@@ -158,11 +159,14 @@ def event_page(name):
         for post in Post.query.all():
             if post.id >= id_max:
                 id_max = post.id+1
-        post = Post(id = id_max,body=text, timestamp = datetime.datetime.now().timestamp(), event_id=eventoo.id, author_id = current_user.id, rank=int(form.evaluation.data))
+        if int(form.evaluation.data != 100):
+            post = Post(id = id_max,body=text, timestamp = datetime.datetime.now().timestamp(), event_id=eventoo.id, author_id = current_user.id, rank=int(form.evaluation.data))
+            Event.query.filter_by(name=name).update(dict(rank=str(rank)))
+            Event.query.filter_by(name=name).update(dict(avaliations=str(avaliations)))
+        else:
+            post = Post(id = id_max,body=text, timestamp = datetime.datetime.now().timestamp(), event_id=eventoo.id, author_id = current_user.id)
         flash("Post Salvo com Sucesso")
         db.session.add(post)
-        Event.query.filter_by(name=name).update(dict(rank=str(rank)))
-        Event.query.filter_by(name=name).update(dict(avaliations=str(avaliations)))
         db.session.commit()
         return redirect(url_for('event_page',name=name))                        # PAGINA DE EMPRESA
     return render_template('event_page.html', title=name, css_file="event_page.css",user=current_user, usuario=usuario, enterprise=empresa, posts=Post.query.filter_by(event_id=eventoo.id), form=form, body=eventoo.body, id  =eventoo.empresa_id )    

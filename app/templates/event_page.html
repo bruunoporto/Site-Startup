@@ -71,9 +71,6 @@
       <span class="icon">★</span>
     </label>
   </form>
-  {% else %}
-  <h1>Adicione Posts!</h1><br><br>
-  {% endif %}
   <script>
     var formu = document.getElementsByClassName("rating")[0];
     formu.addEventListener("click",check); 
@@ -86,6 +83,17 @@
                         console.log(String(ele[i].value));
                       }}}};
   </script>
+  {% else %}
+  <h1>Adicione Posts!</h1><br><br>
+  <script>
+    var textarea = document.getElementsByTagName("textarea")[0];
+    textarea.addEventListener("click",change);
+    function change(){
+      document.getElementById("evaluation").value = 100;
+    }
+    
+  </script>
+  {% endif %}
       <form action="{{url_for('event_page', name = title)}}", method='POST', novalidate, enctype=multipart/form-data>
           <div class="inputs">
             {{ form.hidden_tag() }}

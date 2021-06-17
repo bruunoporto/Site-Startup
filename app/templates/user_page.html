@@ -6,23 +6,19 @@
 <div id="map"></div>
 
 <script>
-    function getDistance(location,location_destiny) {
+    function getDistance(location,location_destiny_lat,location_destiny_lng) {
       var R = 6371.0710; // Radius of the Earth in Km
       var rlat1 = location.position.lat() * (Math.PI/180); 
-      var rlat2 = location_destiny.position.lat() * (Math.PI/180);
+      var rlat2 = location_destiny_lat * (Math.PI/180);
       var difflat = rlat2-rlat1; // Radian difference (latitudes)
-      var difflon = (location_destiny.position.lng()-location.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
+      var difflon = (location_destiny_lng-location.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
 
       var distance = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
 
       return distance;
     }
 
-    function getFinalRanking(current_measure){
-      var median = (last_median + current_measure)/(last_counting + current_counting);
-
-      last_median = median;
-      last_counting = current_counting;
+    function getFinalRanking(median, distance){
 
       var final_ranking = (10*median + (50 - 5/3*distance) ); // Distance has a maximun value of 30 Km
 
@@ -34,7 +30,8 @@
         navigator.geolocation.getCurrentPosition(initMap);
       }
     }
-
+    function getComputer(position)
+      return getDistance(position,{{ evento.latitude}},{{evento.longitude}})))
     // Initialize and add the map
     function initMap(position) {
       // The location of user
@@ -57,6 +54,9 @@
 <!-- Rio de Janeiro - Google Maps API key: "AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s" -->
 
 {% for evento in eventos.query.limit(20).all()%}
+<script>
+  console.log(getFinalRanking({{ evento.rank}},
+</script>
 <div class="enterprises">
   <p>
     <a href="{{url_for('event_page',name=evento.name)}}">{{ evento.name }}</a>
