@@ -147,20 +147,12 @@ def event_page(name):
     form = Comments()
     eventoo = Event.query.filter_by(name=name).first()
     if form.validate_on_submit():
-        return form.text.data
+        return form.data
         text = form.text.data
         id_max = 0
         for post in Post.query.all():
-           if post.id > id_max:
-            id_max = post.id+1
-            try:
-                if id_max == Post.query.filter_by(id = id_max).first().id:
-                    id_max = id_max +1
-                    print(id_max)
-                else :
-                    break
-            except:
-                break
+            if post.id > id_max:
+                id_max = post.id+1
         post = Post(id = id_max,body=text, timestamp = datetime.datetime.now().timestamp(), event_id=eventoo.id, author_id = current_user.id)
         flash("Post Salvo com Sucesso")
         db.session.add(post)
