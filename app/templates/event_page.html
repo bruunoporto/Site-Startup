@@ -7,9 +7,9 @@
   Descrição {{ event.body }}
   <br>
   Evento para : {{event.age_groups.capitalize()}}<br>
-
+  Tipo do Evento: {{ event.event_type.capitalize()}}<br>
   Evento por: <a href={{url_for("enterprise_page_specific", name = enterprise.query.filter_by(id=event.empresa_id).first().enterprise_name)}}> {{enterprise.query.filter_by(id=event.empresa_id).first().enterprise_name}}</a>
-  Avaliação: {{event.rank}}
+  Avaliação: {{rank}}
 </h3>
 
 <div id="map"></div>

@@ -60,7 +60,7 @@ def event_register_page():
         date =  datetime.datetime.timestamp(datetime.datetime.combine(form.date.data, datetime.datetime.min.time()))
         id_max = 0
         for event in Event.query.all():
-           if event.id > id_max:
+           if event.id >= id_max:
             id_max = event.id+1
             try:
                 if id_max == Event.query.filter_by(id = id_max).first().id:
@@ -70,7 +70,7 @@ def event_register_page():
                     break
             except:
                 break
-        post = Event(id = id_max,body=text, timestamp = date, empresa_id=current_user.id,name = name, latitude=latitude,longitude = longitude, age_groups=age_group, event_type=interest)
+        post = Event(id = id_max,body=text, timestamp = date, empresa_id=current_user.id,name = name, latitude=latitude,longitude = longitude, age_groups=age_group, event_type=interest, rank = 0)
         flash("Evento Salvo com Sucesso")
         db.session.add(post)
         db.session.commit()
@@ -150,7 +150,7 @@ def event_page(name):
         text = form.text.data
         try:
             avaliations = eventoo.avaliations + 1
-            rank = (int(form.evaluation.data) + eventoo.rank * eventoo.avaliations) / avaliations
+            rank = round((int(form.evaluation.data) + eventoo.rank * eventoo.avaliations) / avaliations,2)
         except TypeError:
             avaliations = 1
             rank = form.evaluation.data
@@ -168,8 +168,12 @@ def event_page(name):
         db.session.add(post)
         db.session.commit()
         return redirect(url_for('event_page',name=name))   
-    print(datetime.datetime.fromtimestamp(eventoo.timestamp).strftime("%d/%m/%Y"))                     # PAGINA DE EMPRESA
-    return render_template('event_page.html', title=name, css_file="event_page.css",user=current_user, usuario=usuario, enterprise=empresa, posts=Post.query.filter_by(event_id=eventoo.id), form=form, event=eventoo, date=datetime.datetime.fromtimestamp(eventoo.timestamp).strftime("%d/%m/%Y") )    
+    print(datetime.datetime.fromtimestamp(eventoo.timestamp).strftime("%d/%m/%Y"))
+    if eventoo.rank:
+        newrank = round(eventoo.rank,2)
+    else:
+        newrank = None                     # PAGINA DE EMPRESA
+    return render_template('event_page.html', title=name, css_file="event_page.css",user=current_user, usuario=usuario, enterprise=empresa, posts=Post.query.filter_by(event_id=eventoo.id), form=form, event=eventoo, date=datetime.datetime.fromtimestamp(eventoo.timestamp).strftime("%d/%m/%Y"), rank=newrank )    
 
 @app.route("/user_page", methods=["POST", "GET"])
 @login_required

@@ -6,12 +6,14 @@
 <div id="map"></div>
 
 <script>
+    let event_list = []
     function getDistance(location,location_destiny_lat,location_destiny_lng) {
+      console.log(location)
       var R = 6371.0710; // Radius of the Earth in Km
-      var rlat1 = location.position.lat() * (Math.PI/180); 
+      var rlat1 = location.latitude * (Math.PI/180); 
       var rlat2 = location_destiny_lat * (Math.PI/180);
       var difflat = rlat2-rlat1; // Radian difference (latitudes)
-      var difflon = (location_destiny_lng-location.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
+      var difflon = (location_destiny_lng-location.longitude) * (Math.PI/180); // Radian difference (longitudes)
 
       var distance = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
 
@@ -30,9 +32,7 @@
         navigator.geolocation.getCurrentPosition(initMap);
       }
     }
-    function getComputer(position)
-      return getDistance(position,{{ evento.latitude}},{{evento.longitude}})))
-    // Initialize and add the map
+      // Initialize and add the map
     function initMap(position) {
       // The location of user
       const location = { lat: position.coords.latitude ,lng: position.coords.longitude };
@@ -55,17 +55,35 @@
 
 {% for evento in eventos.query.limit(20).all()%}
 <script>
-  console.log(getFinalRanking({{ evento.rank}},
+  navigator.geolocation.getCurrentPosition(function(position) {
+  distance = getDistance(position.coords,{{ evento.latitude}} ,{{evento.longitude}});
+  console.log(distance);
+  console.log(getFinalRanking({{ evento.rank}},distance));
+  event_list.push(getFinalRanking({{ evento.rank}},distance));
+  console.log(event_list)
+  })
 </script>
 <div class="enterprises">
   <p>
     <a href="{{url_for('event_page',name=evento.name)}}">{{ evento.name }}</a>
     <br><br><br> 
-    Descrição: 
-    <s>Recomendação: {{ evento.rank}} Estrelas</s><br>
-    <b>{{ evento.body }}</b>
-  </p>
+    Descrição: {% if evento.rank %}
+    <s>Recomendação: {{ evento.rank}} Estrelas</s><br>{% endif %}
+    <b>{{ evento.body }}</b></p>
 </div>
+{% endfor %}
+{% set event_list = eventos.query.all()%}
+<div class="enterprises"></div>
+{% for evento in event_list%}
+<script>
+  var newlist = event_list
+  if (event_list[{{loop.index-1}}] == newlist.sort(function(a, b){return b-a})[0]){
+    var content = "<p><a href="{{url_for('event_page',name=evento.name)}}">{{ evento.name }}</a><br><br><br> Descrição: {% if evento.rank %}<s>Recomendação: {{ evento.rank}} Estrelas</s><br>{% endif %}<b>{{ evento.body }}</b></p>"
+    console.log("yay")
+    document.getElementsByClassName("enterprises")[0].insertAdjacentHTML('afterbegin', content);
+  }
+</script>
+
 
 {% endfor %}
 {% endblock %}
