@@ -24,7 +24,7 @@
       last_median = median;
       last_counting = current_counting;
 
-      var final_ranking = (10*median - 5/3*distance)*10 // Distance has a maximun value of 30 Km
+      var final_ranking = (10*median + (50 - 5/3*distance) ); // Distance has a maximun value of 30 Km
 
       return final_ranking;
     }
