@@ -2,16 +2,27 @@
 {% block content %}
 
 <h1>Olá, {{user.username}}</h1>
-<!--
+
 <div id="map"></div>
 
 <script>
+    function getDistance(location,location_destiny) {
+      var R = 6371.0710; // Radius of the Earth in Km
+      var rlat1 = location.position.lat() * (Math.PI/180); 
+      var rlat2 = location_destiny.position.lat() * (Math.PI/180);
+      var difflat = rlat2-rlat1; // Radian difference (latitudes)
+      var difflon = (location_destiny.position.lng()-location.position.lng()) * (Math.PI/180); // Radian difference (longitudes)
+
+      var distance = 2 * R * Math.asin(Math.sqrt(Math.sin(difflat/2)*Math.sin(difflat/2)+Math.cos(rlat1)*Math.cos(rlat2)*Math.sin(difflon/2)*Math.sin(difflon/2)));
+      return distance;
+    }
 
     function getLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(initMap);
       }
     }
+    
     // Initialize and add the map
     function initMap(position) {
       // The location of user
@@ -30,7 +41,7 @@
   </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s&callback=getLocation&libraries=&v=weekly" async></script>
--->
+
 <!-- Rio de Janeiro - Google Maps API key: "AIzaSyBJTxu6Qp90QIoM5aUsK2rM8xqWEOJbZ1s" -->
 
 {% for evento in eventos.query.limit(20).all()%}
