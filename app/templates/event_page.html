@@ -85,14 +85,6 @@
   </script>
   {% else %}
   <h1>Adicione Posts!</h1><br><br>
-  <script>
-    var textarea = document.getElementsByTagName("textarea")[0];
-    textarea.addEventListener("click",change);
-    function change(){
-      document.getElementById("evaluation").value = 100;
-    }
-    
-  </script>
   {% endif %}
       <form action="{{url_for('event_page', name = title)}}", method='POST', novalidate, enctype=multipart/form-data>
           <div class="inputs">
@@ -127,7 +119,18 @@
       </form>
     </section>
 </div>
-
+{% if not current_user.username %}
+<script>
+  document.getElementsByTagName("form")[0].addEventListener("click",change);
+  function change(){
+    if (document.getElementById("evaluation").value != 100){
+    document.getElementById("evaluation").value = 100;
+    }
+    console.log(document.getElementById("evaluation").value)
+  }
+  
+</script>
+{% endif %}
 <aside class="aside">
   {% for post in posts%}
   {% if usuario.query.filter_by(id = post.author_id).first().username %}

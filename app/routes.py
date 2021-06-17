@@ -128,7 +128,7 @@ def user_register_page():
 def enterprise_page_specific(name):
     form = Comments()
     enterpriseS= empresa.query.filter_by(enterprise_name=name).first()
-    if form.validate_on_submit():
+    if form.is_submitted():
         text = form.text.data
         id_max = 0
         for post in Post.query.all():
@@ -147,7 +147,6 @@ def event_page(name):
     form = Comments()
     eventoo = Event.query.filter_by(name=name).first()
     if form.is_submitted():
-        return form.data
         text = form.text.data
         try:
             avaliations = eventoo.avaliations + 1
