@@ -158,7 +158,7 @@ def event_page(name):
         for post in Post.query.all():
             if post.id >= id_max:
                 id_max = post.id+1
-        post = Post(id = id_max,body=text, timestamp = datetime.datetime.now().timestamp(), event_id=eventoo.id, author_id = current_user.id)
+        post = Post(id = id_max,body=text, timestamp = datetime.datetime.now().timestamp(), event_id=eventoo.id, author_id = current_user.id, rank=int(form.evaluation.data))
         flash("Post Salvo com Sucesso")
         db.session.add(post)
         Event.query.filter_by(name=name).update(dict(rank=str(rank)))
